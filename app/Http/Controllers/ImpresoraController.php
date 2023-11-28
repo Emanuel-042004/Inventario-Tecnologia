@@ -1,0 +1,80 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Impresora;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+
+class ImpresoraController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function index(Request $request): View
+    {
+
+        $search = $request->input('search');
+        $impresoras = Impresora::filter($search)->paginate(10);
+        $filtro = $request->get('filtro', 'todas'); // Obtener el valor del filtro
+
+        if ($filtro === 'propias') {
+            $impresoras = Impresora::where('tipo', 'Propia')->latest()->paginate(12);
+        } elseif ($filtro === 'alquiladas') {
+            $impresoras = Impresora::where('tipo', 'Alquilada')->latest()->paginate(12);
+        } else {
+            $impresoras = Impresora::latest()->paginate(12);
+        }
+        return view('impresoras.impresoras', ['impresoras' => $impresoras]);
+    }
+
+    public function create(): View
+    {
+        return view('create');
+
+    }
+
+
+    public function store(Request $request): RedirectResponse
+    {
+        Impresora::create($request->all());
+        return redirect()->route('impresoras.index')->with('success', 'Impresora agregada con éxito');
+
+    }
+
+    public function show(Impresora $impresora)
+    {
+
+    }
+
+
+    public function edit(Impresora $impresora)
+    {
+        return view('edit', ['impresora' => $impresora]);
+
+    }
+
+
+    public function update(Request $request, Impresora $impresora): RedirectResponse
+    {
+        $impresora->update($request->all());
+        return redirect()->route('impresoras.index')->with('update_success', 'Equipo actualizado con éxito');
+
+    }
+
+
+    public function destroy(Impresora $impresora)
+    {
+        \DB::table('historial')->where('serial', $impresora->serial)->delete();
+        $impresora->delete();
+        return redirect()->route('impresoras.index')->with('delete_success', 'Impresora Eliminada');
+    }
+}
