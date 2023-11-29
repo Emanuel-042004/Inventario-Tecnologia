@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $equipos = Equipo::all(); // Esto es un ejemplo, ajusta según tu lógica de obtención de datos
+        $equipos = Equipo::paginate(12);
         return view('equipos.equipos', compact('equipos'));
     }
 }
