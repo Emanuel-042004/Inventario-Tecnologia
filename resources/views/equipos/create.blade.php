@@ -171,7 +171,7 @@
   </div>
 
   <div class="text-center">
-    <button type="submit" name="guardar" class="btn btn-dark shadow">Guardar</button>
+    <button type="submit" name="guardar" class="btn btn-dark shadow" style="margin-bottom: 70px;">Guardar</button>
   </div>
 
 </form>

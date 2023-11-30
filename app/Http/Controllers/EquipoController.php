@@ -59,7 +59,7 @@ class EquipoController extends Controller
     {
 
         Equipo::create($request -> all()); 
-        return redirect()->route('equipos.index')->with('success', 'Equipo agregado con éxito'); 
+        return redirect()->route('equipos.index')->with('success', 'Equipo agregado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     
         //
     }
@@ -87,7 +87,7 @@ class EquipoController extends Controller
     public function update(Request $request, Equipo $equipo): RedirectResponse
     {
         $equipo->update($request ->all());
-        return redirect()->route('equipos.index')->with('update_success', 'Equipo actualizado con éxito');
+        return redirect()->route('equipos.index')->with('update_success', 'Equipo actualizado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     
         //
     }
@@ -101,7 +101,7 @@ class EquipoController extends Controller
        
         $equipo->delete();
 
-        return redirect()->route('equipos.index')->with('delete_success', 'Equipo Eliminado'); //
+        return redirect()->route('equipos.index')->with('delete_success', 'Equipo Eliminado')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0'); //
     }
 
 

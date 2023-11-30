@@ -58,7 +58,7 @@ class HistorialCelularController extends Controller
 
         $historial->save(); //
         return redirect()->route('celulares.historial.index', $celular->id)
-            ->with('success', 'Registro de historial agregado con éxito');
+            ->with('success', 'Registro de historial agregado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
 
     /**
@@ -92,7 +92,7 @@ class HistorialCelularController extends Controller
             'descripcion' => $request->input('descripcion'),
 
         ]);
-        return redirect()->route('celulares.historial.index', [$celular->id, $historialCelular->id])->with('update_success', 'Registro de historial agregado con éxito'); //
+        return redirect()->route('celulares.historial.index', [$celular->id, $historialCelular->id])->with('update_success', 'Registro de historial agregado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
 
     /**
@@ -102,6 +102,6 @@ class HistorialCelularController extends Controller
     {
         $historialCelular->delete();
 
-        return redirect()->route('celulares.historial.index', $celular->id)->with('delete_success', 'Historial eliminado con éxito'); //
+        return redirect()->route('celulares.historial.index', $celular->id)->with('delete_success', 'Historial eliminado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
 }

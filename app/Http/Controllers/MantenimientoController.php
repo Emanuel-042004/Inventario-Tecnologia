@@ -76,7 +76,7 @@ class MantenimientoController extends Controller
         $mantenible->mantenimiento()->save($mantenimiento);
 
         return redirect()->route('mantenimientos.index', ['tipo' => $tipo, 'id' => $id])
-            ->with('success', 'Mantenimiento creado exitosamente');
+            ->with('success', 'Mantenimiento creado exitosamente')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
     /**
      * Display the specified resource.
@@ -110,7 +110,7 @@ class MantenimientoController extends Controller
         $mantenimiento->save();
 
         return redirect()->route('mantenimientos.index', ['tipo' => $tipo, 'id' => $id])
-            ->with('success', 'Mantenimiento actualizado exitosamente');
+            ->with('success', 'Mantenimiento actualizado exitosamente')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
 
     /**
@@ -125,6 +125,6 @@ class MantenimientoController extends Controller
         $mantenimiento->delete();
     
         return redirect()->route('mantenimientos.index', ['tipo' => $tipo, 'id' => $id])
-            ->with('delete_success', 'Mantenimiento eliminado exitosamente');
+            ->with('delete_success', 'Mantenimiento eliminado exitosamente')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
 }

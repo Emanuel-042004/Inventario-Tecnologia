@@ -95,7 +95,7 @@ hr {
   background-color: red;
 }
 
-/* styles.css */
+/* styles.css 
 
 .search-form {
   display: flex;
@@ -105,7 +105,7 @@ hr {
   border-radius: 25px;
   padding: 5px;
   width: 300px;
-  margin-left: px; /* Mover a la izquierda según tus preferencias */
+  margin-left: px; 
 }
 
 .search-input {
@@ -132,6 +132,42 @@ hr {
   transition: background-color 0.3s;
 }
 
+
+.search-button:hover {
+  background-color: #c01313;
+  color: white;
+}*/
+
+.search-form {
+  display: flex;
+  align-items: center;
+  background-color: #000000;
+  border: 1px solid #000000;
+  border-radius: 25px;
+  padding: 5px;
+  max-width: 300px; /* Set a maximum width for the search bar */
+  margin: 0 auto; /* Center the search bar */
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 25px;
+}
+
+.search-button {
+  background-color: #000000;
+  border: none;
+  color: rgb(255, 255, 255);
+  border-radius: 25px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
 
 .search-button:hover {
   background-color: #c01313;
@@ -164,4 +200,35 @@ hr {
     text-decoration: underline;
 }
 
+.sticky-btn-container {
+  position: fixed;
+  left: 0;
+  bottom: 20px;
+  cursor: pointer;
+}
 
+.sticky-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
+.sticky-btn-text {
+  margin-left: 10px;
+  white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+  overflow: hidden; /* Oculta cualquier texto que desborde el contenedor */
+  max-width: 0; /* Inicialmente establece el ancho máximo a 0 */
+  transition: max-width 0.5s ease; /* Agrega una transición al cambiar el ancho máximo */
+}
+
+.sticky-btn:hover .sticky-btn-text {
+  max-width: 200px; /* Ajusta el ancho máximo al pasar el mouse para mostrar el texto */
+}

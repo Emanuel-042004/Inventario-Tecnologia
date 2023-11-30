@@ -8,7 +8,9 @@
         text: '{{ Session::get('success') }}',
         icon: 'success',
         timer: 2000 
-    });
+    }).then(() => {
+    window.location.replace('{{ route('mantenimientos.index',  ['tipo' => $tipo, 'id' => $mantenible->id]) }}');
+});
 </script>
 @endif
 
@@ -19,7 +21,9 @@
         text: '{{ Session::get('update_success') }}',
         icon: 'success',
         timer: 2000 
-    });
+    }).then(() => {
+    window.location.replace('{{ route('mantenimientos.index',  ['tipo' => $tipo, 'id' => $mantenible->id]) }}');
+});
 </script>
 @endif
 
@@ -32,7 +36,9 @@
         icon: "success",
         showConfirmButton: false,
         timer: 2500
-    });
+    }).then(() => {
+    window.location.replace('{{ route('mantenimientos.index',  ['tipo' => $tipo, 'id' => $mantenible->id]) }}');
+});
 </script>
 @endif
 

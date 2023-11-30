@@ -14,32 +14,32 @@
 
                     <div class="mb-3">
                         <label for="serial" class="form-label">Codigo Interno:</label>
-                        <input type="text" class="form-control shadow" id="serial" name="serial" required>
+                        <input type="text" class="form-control shadow" id="serial" name="serial" >
                     </div>
 
                     <div class="mb-3">
                         <label for="proveedor" class="form-label">Proveedor:</label>
-                        <input type="text" class="form-control shadow" id="proveedor" name="proveedor" required>
+                        <input type="text" class="form-control shadow" id="proveedor" name="proveedor" >
                     </div>
 
                     <div class="mb-3">
                         <label for="modelo" class="form-label">Modelo:</label>
-                        <input type="text" class="form-control shadow" id="modelo" name="modelo" required>
+                        <input type="text" class="form-control shadow" id="modelo" name="modelo" >
                     </div>
 
                     <div class="mb-3">
                         <label for="codigo" class="form-label">Codigo:</label>
-                        <input type="text" class="form-control shadow" id="codigo" name="codigo" required>
+                        <input type="text" class="form-control shadow" id="codigo" name="codigo" >
                     </div>
 
                     <div class="mb-3">
                         <label for="ubicacion" class="form-label">Ubicacion:</label>
-                        <input type="text" class="form-control shadow" id="ubicacion" name="ubicacion" required>
+                        <input type="text" class="form-control shadow" id="ubicacion" name="ubicacion" >
                     </div>
 
                     <div class="mb-3">
                         <label for="tipo_toner" class="form-label">Tipo de Toner:</label>
-                        <input type="text" class="form-control shadow" id="tipo_toner" name="tipo_toner" required>
+                        <input type="text" class="form-control shadow" id="tipo_toner" name="tipo_toner" >
                     </div>
 
                     <div class="mb-3">

@@ -62,7 +62,7 @@
                             <button type="submit" class="btn btn-danger">
                                 {{ __('Login') }}
                             </button>
-                            <a href="{{ route('register') }}" class="btn btn-dark">Registrarse</a>
+                           <!-- <a href="{{ route('register') }}" class="btn btn-dark">Registrarse</a>-->
                         </div>
                     </form>
                 </div>

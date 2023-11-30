@@ -11,14 +11,14 @@
             <form action="{{ route('equipos.index') }}" method="GET">
                 <div class="form-group float-end">
                     <!--FILTRO -->
-                    <select class="form-control" name="filtro" id="filtro">
+                    <select class="form-control shadow" name="filtro" id="filtro">
                         <option value="todos" {{ Request::get('filtro')==='todos' ? 'selected' : '' }}>Todos</option>
                         <option value="propios" {{ Request::get('filtro')==='propios' ? 'selected' : '' }}>Propios
                         </option>
                         <option value="alquilados" {{ Request::get('filtro')==='alquilados' ? 'selected' : '' }}>
                             Alquilados</option>
                     </select>
-                    <button type="submit" class="btn btn-light float-end"><strong>Filtrar</strong></button>
+                    <button type="submit" class="btn btn-light float-end shadow"><strong>Filtrar</strong></button>
                 </div>
             </form>
         </div>
@@ -36,7 +36,9 @@
             text: '{{ Session::get('success') }}',
             icon: 'success',
             timer: 2000
-        });
+        }).then(() => {
+    window.location.replace('{{ route('equipos.index') }}');
+});
     </script>
     @endif
 
@@ -47,7 +49,9 @@
             text: '{{ Session::get('update_success') }}',
             icon: 'success',
             timer: 2000
-        });
+        }).then(() => {
+    window.location.replace('{{ route('equipos.index') }}');
+});
     </script>
     @endif
 
@@ -58,7 +62,9 @@
             text: '{{ Session::get('delete_success') }}',
             icon: 'success',
             timer: 2000
-        });
+        }).then(() => {
+    window.location.replace('{{ route('equipos.index') }}');
+});
     </script>
     @endif
     <!--REGISTROS -->
@@ -105,7 +111,7 @@
                             method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="button" class="btn btn-danger eliminar-equipo" style="border-radius: 50px;">
+                            <button type="button" class="btn btn-danger eliminar-equipo shadow" style="border-radius: 50px;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-trash3" viewBox="0 0 16 16">
                                     <path
@@ -113,7 +119,7 @@
                                 </svg> Eliminar</button>
                         </form>
                         <!--BOTON VER DETALLES-->
-                        <a href="" class="btn btn-light float-end" data-bs-toggle="modal" style="border-radius: 50px;"
+                        <a href="" class="btn btn-light float-end shadow" data-bs-toggle="modal" style="border-radius: 50px;"
                             data-bs-target="#verEquipoPModal{{$equipo->id}}">
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

@@ -46,7 +46,7 @@ class ImpresoraController extends Controller
     public function store(Request $request): RedirectResponse
     {
         Impresora::create($request->all());
-        return redirect()->route('impresoras.index')->with('success', 'Impresora agregada con éxito');
+        return redirect()->route('impresoras.index')->with('success', 'Impresora agregada con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
 
     }
 
@@ -66,7 +66,7 @@ class ImpresoraController extends Controller
     public function update(Request $request, Impresora $impresora): RedirectResponse
     {
         $impresora->update($request->all());
-        return redirect()->route('impresoras.index')->with('update_success', 'Equipo actualizado con éxito');
+        return redirect()->route('impresoras.index')->with('update_success', 'Equipo actualizado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
 
     }
 
@@ -75,6 +75,6 @@ class ImpresoraController extends Controller
     {
         \DB::table('historial')->where('serial', $impresora->serial)->delete();
         $impresora->delete();
-        return redirect()->route('impresoras.index')->with('delete_success', 'Impresora Eliminada');
+        return redirect()->route('impresoras.index')->with('delete_success', 'Impresora Eliminada')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
 }

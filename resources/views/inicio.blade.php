@@ -75,8 +75,8 @@
         </div>
         <div class="col-md-6 mb-3">
             <h1><strong>Bienvenido a la aplicación de inventarios</strong></h1><br>
-            <p>Este es un sitio creado para gestionar el inventario de Equipos, Impresoras y telefonos que posee la
-                empresa DEPOSITO LOS RETALES</p>
+            <p>Este es un sitio creado para gestionar el inventario de Equipos, Impresoras y teléfonos que posee la
+                empresa LOS RETALES</p>
 
             @if (Route::has('login'))
             <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
@@ -85,9 +85,9 @@
                 @else
                 <a href="{{ route('login') }}" class="btn btn-dark">Iniciar Sesion</a>
 
-                @if (Route::has('register'))
+                <!--@if (Route::has('register'))
                 <a href="{{ route('register') }}" class="btn btn-dark">Registrarse</a>
-                @endif
+                @endif-->
                 @endauth
             </div>
             @endif

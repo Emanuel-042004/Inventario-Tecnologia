@@ -23,7 +23,9 @@
       text: '{{ Session::get('success') }}',
       icon: 'success',
       timer: 2000
-    });
+    }).then(() => {
+    window.location.replace('{{ route('celulares.index') }}');
+});
   </script>
   @endif
 
@@ -34,7 +36,9 @@
       text: '{{ Session::get('update_success') }}',
       icon: 'success',
       timer: 2000
-    });
+    }).then(() => {
+    window.location.replace('{{ route('celulares.index') }}');
+});
   </script>
   @endif
 
@@ -45,7 +49,9 @@
       text: '{{ Session::get('delete_success') }}',
       icon: 'success',
       timer: 2000
-    });
+    }).then(() => {
+    window.location.replace('{{ route('celulares.index') }}');
+});
   </script>
   @endif
 

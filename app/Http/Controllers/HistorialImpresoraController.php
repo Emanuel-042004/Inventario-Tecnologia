@@ -60,7 +60,7 @@ class HistorialImpresoraController extends Controller
         $historial->save();
     
         return redirect()->route('impresoras.historial.index', $impresora->id)
-            ->with('success', 'Registro de historial agregado con éxito');
+            ->with('success', 'Registro de historial agregado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
     
 
@@ -96,7 +96,7 @@ class HistorialImpresoraController extends Controller
             'descripcion' => $request->input('descripcion'),
         ]);
 
-        return redirect()->route('impresoras.historial.index', [$impresora->id, $historialImpresora->id])->with('update_success', 'Historial actualizado con éxito');//
+        return redirect()->route('impresoras.historial.index', [$impresora->id, $historialImpresora->id])->with('update_success', 'Historial actualizado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
 
     /**
@@ -109,7 +109,7 @@ class HistorialImpresoraController extends Controller
         {
             $historialImpresora->delete();
 
-            return redirect()->route('impresoras.historial.index', $impresora->id)->with('delete_success', 'Historial eliminado con éxito');
+            return redirect()->route('impresoras.historial.index', $impresora->id)->with('delete_success', 'Historial eliminado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
         }
 
   

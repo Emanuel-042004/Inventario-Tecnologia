@@ -58,7 +58,7 @@ class HistorialEquipoController extends Controller
     
         $historial->save();
     
-        return redirect()->route('equipos.historial.index', $equipo->id)->with('success', 'Registro de historial agregado con éxito');
+        return redirect()->route('equipos.historial.index', $equipo->id)->with('success', 'Registro de historial agregado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
 
     /**
@@ -95,7 +95,7 @@ class HistorialEquipoController extends Controller
             'descripcion' => $request->input('descripcion'),
         ]);
 
-        return redirect()->route('equipos.historial.index', [$equipo->id, $historial->id])->with('update_success', 'Historial actualizado con éxito');
+        return redirect()->route('equipos.historial.index', [$equipo->id, $historial->id])->with('update_success', 'Historial actualizado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
 
     /**
@@ -105,6 +105,6 @@ class HistorialEquipoController extends Controller
     {
         $historial->delete();
 
-        return redirect()->route('equipos.historial.index', $equipo->id)->with('delete_success', 'Historial eliminado ');
+        return redirect()->route('equipos.historial.index', $equipo->id)->with('delete_success', 'Historial eliminado ')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
 }

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('ubicacion')->nullable();
             $table->string('tipo_toner')->nullable();
             $table->timestamps();
+        
         });
     }
 

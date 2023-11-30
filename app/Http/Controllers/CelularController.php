@@ -42,7 +42,7 @@ class CelularController extends Controller
         $data = array_filter($data);
 
         Celular::create($data);
-        return redirect()->route('celulares.index')->with('success', 'Celular agregado con éxito');
+        return redirect()->route('celulares.index')->with('success', 'Celular agregado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
 
 
@@ -67,7 +67,7 @@ class CelularController extends Controller
         $data = array_filter($data);
 
         $celular->update($data);
-        return redirect()->route('celulares.index')->with('success', 'Celular actualizado con éxito');
+        return redirect()->route('celulares.index')->with('success', 'Celular actualizado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
 
 
@@ -75,6 +75,6 @@ class CelularController extends Controller
     {
        \DB::table('historial')->where('serial', $celular->serial)->delete();
         $celular->delete();
-        return redirect()->route('celulares.index')->with('delete_success', 'Celular eliminado con éxito'); //
+        return redirect()->route('celulares.index')->with('delete_success', 'Celular eliminado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
 }

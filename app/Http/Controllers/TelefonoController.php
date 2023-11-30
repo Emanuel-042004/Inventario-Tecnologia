@@ -44,7 +44,7 @@ class TelefonoController extends Controller
 
 
         Telefono::create($request->all());
-        return redirect()->route('telefonos.index')->with('success', 'Celular agregado con éxito');
+        return redirect()->route('telefonos.index')->with('success', 'Celular agregado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
     /**
      * Display the specified resource.
@@ -68,7 +68,7 @@ class TelefonoController extends Controller
     public function update(Request $request, Telefono $telefono): RedirectResponse
     {
         $telefono->update($request->all());
-        return redirect()->route('telefonos.index')->with('update_success', 'Telefono actualizado con éxito');
+        return redirect()->route('telefonos.index')->with('update_success', 'Telefono actualizado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
 
         //
     }
@@ -80,6 +80,6 @@ class TelefonoController extends Controller
     {
         \DB::table('historial')->where('serial', $telefono->serial)->delete();
         $telefono->delete();
-        return redirect()->route('telefonos.index')->with('delete_success', 'Celular eliminado con éxito'); // //
+        return redirect()->route('telefonos.index')->with('delete_success', 'Celular eliminado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
 }

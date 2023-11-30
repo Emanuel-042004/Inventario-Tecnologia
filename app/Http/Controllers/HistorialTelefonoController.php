@@ -57,7 +57,7 @@ class HistorialTelefonoController extends Controller
 
         $historial->save(); //
         return redirect()->route('telefonos.historial.index', $telefono->id)
-            ->with('success', 'Registro de historial agregado con éxito');
+            ->with('success', 'Registro de historial agregado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
 
     /**
@@ -91,7 +91,7 @@ class HistorialTelefonoController extends Controller
             'descripcion' => $request->input('descripcion'),
 
         ]);
-        return redirect()->route('telefonos.historial.index', [$telefono->id, $historialTelefono->id])->with('update_success', 'Registro de historial agregado con éxito'); //
+        return redirect()->route('telefonos.historial.index', [$telefono->id, $historialTelefono->id])->with('update_success', 'Registro de historial agregado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
 
     /**
@@ -101,7 +101,7 @@ class HistorialTelefonoController extends Controller
     {
         $historialTelefono->delete();
 
-        return redirect()->route('telefonos.historial.index', $telefono->id)->with('delete_success', 'Historial eliminado con éxito'); //
+        return redirect()->route('telefonos.historial.index', $telefono->id)->with('delete_success', 'Historial eliminado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
 }
 
