@@ -211,14 +211,14 @@ hr {
   background-color: #007bff;
   color: #fff;
   padding: 10px;
-  border-radius: 50px;
+  border-radius: 0px 20px 20px 0px ;
   display: flex;
   align-items: center;
   transition: background-color 0.3s ease;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  -ms-border-radius: 50px;
-  -o-border-radius: 50px;
+  -webkit-border-radius: 0px 20px 20px 0px ;
+  -moz-border-radius: 0px 20px 20px 0px ;
+  -ms-border-radius: 0px 20px 20px 0px ;
+  -o-border-radius: 0px 20px 20px 0px ;
 }
 
 .sticky-btn-text {
@@ -232,3 +232,13 @@ hr {
 .sticky-btn:hover .sticky-btn-text {
   max-width: 200px; /* Ajusta el ancho máximo al pasar el mouse para mostrar el texto */
 }
+
+ .sticky-btn svg {
+        width: 30px; /* Establece el ancho según el tamaño deseado */
+        height: 30px; /* Establece la altura según el tamaño deseado */
+    }
+
+ .btn-success svg{
+  width: 20px; /* Establece el ancho según el tamaño deseado */
+  height: 20px; 
+ }
