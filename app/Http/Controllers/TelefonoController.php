@@ -78,7 +78,7 @@ class TelefonoController extends Controller
      */
     public function destroy(Telefono $telefono)
     {
-        \DB::table('historial')->where('serial', $telefono->serial)->delete();
+        
         $telefono->delete();
         return redirect()->route('telefonos.index')->with('delete_success', 'Celular eliminado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }

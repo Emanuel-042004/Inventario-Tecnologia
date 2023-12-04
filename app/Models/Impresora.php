@@ -19,6 +19,9 @@ class Impresora extends Model
        
     ];
 
+    public function historial(){
+        return $this->morphOne(Historial::class,'historiable');
+    }
     public function mantenimiento(){
         return $this->morphOne(Mantenimiento::class,'mantenible');
     }
@@ -27,6 +30,9 @@ class Impresora extends Model
     {
         static::deleting(function ($impresora) {
             $impresora->mantenimiento()->delete();
+            if ($impresora->historial) {
+                $impresora->historial()->delete();
+            }
         });
     }
 

@@ -22,6 +22,9 @@ class Celular extends Model
         'ubicacion',
         'departamento'
     ];
+    public function historial(){
+        return $this->morphOne(Historial::class,'historiable');
+    }
     public function mantenimiento(){
         return $this->morphOne(Mantenimiento::class,'mantenible');
     }
@@ -29,6 +32,9 @@ class Celular extends Model
     {
         static::deleting(function ($celular) {
             $celular->mantenimiento()->delete();
+            if ($celular->historial) {
+                $celular->historial()->delete();
+            }
         });
     }
 

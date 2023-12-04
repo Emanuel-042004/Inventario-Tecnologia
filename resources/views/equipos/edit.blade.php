@@ -3,7 +3,7 @@
 
 <div class="recuadro">
   <div>
-    <h2 class="text-black">Crear Equipo</h2>
+    <h2 class="text-black">Editar Equipo</h2>
   </div>
   <div>
     <a href="{{route('equipos.index')}}" class="btn btn-dark shadow">Volver</a>
@@ -86,12 +86,8 @@
         <input type="text" class="form-control shadow" id="encargado" name="encargado" value="{{$equipo->encargado}}">
       </div>
       <div class="mb-3">
-        <label for="ubicacion" class="form-label">Sede</label>
-        <select class="form-select" id="ubicacion" name="ubicacion">
-          <option value="administración">Administración</option>
-          <option value="multimedia">Multimedia</option>
-          <option value="pdv_alameda">PDV Alameda</option>
-        </select>
+        <label for="ubicacion" class="form-label">Ubicacion</label>
+        <input type="text" class="form-control shadow" id="ubicacion" name="ubicacion" value="{{$equipo->ubicacion}}">
       </div>
     </div>
 
@@ -152,7 +148,7 @@
     </select>
   </div>
 
-  <div class="col-md-6">
+  
     <h4>Procesador</h4>
     <hr>
     <div class="mb-3">
@@ -160,7 +156,7 @@
       <input type="text" class="form-control shadow" id="version_procesador" name="version_procesador"
         value="{{$equipo->version_procesador}}">
     </div>
-  </div>
+  
   <div class="mb-3">
     <label for="modelo_procesador" class="form-label">Modelo de Procesador</label>
     <input type="text" class="form-control shadow" id="modelo_procesador" name="modelo_procesador"

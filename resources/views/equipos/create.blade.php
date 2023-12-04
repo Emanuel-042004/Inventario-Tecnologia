@@ -83,12 +83,8 @@
         <input type="text" class="form-control shadow" id="encargado" name="encargado" value="">
       </div>
       <div class="mb-3">
-        <label for="ubicacion" class="form-label">Sede</label>
-        <select class="form-select" id="ubicacion" name="ubicacion">
-          <option value="administración">Administración</option>
-          <option value="multimedia">Multimedia</option>
-          <option value="pdv_alameda">PDV Alameda</option>
-        </select>
+        <label for="ubicacion" class="form-label">Ubicacion</label>
+        <input type="text" class="form-control shadow" id="ubicacion" name="ubicacion" value="">
       </div>
     </div>
 
@@ -147,14 +143,14 @@
     </select>
   </div>
 
-  <div class="col-md-6">
+ 
     <h4>Procesador</h4>
     <hr>
     <div class="mb-3">
       <label for="version_procesador" class="form-label">Versión de Procesador</label>
       <input type="text" class="form-control shadow" id="version_procesador" name="version_procesador" value="">
     </div>
-  </div>
+  
   <div class="mb-3">
     <label for="modelo_procesador" class="form-label">Modelo de Procesador</label>
     <input type="text" class="form-control shadow" id="modelo_procesador" name="modelo_procesador" value="">

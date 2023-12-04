@@ -18,16 +18,23 @@ class Telefono extends Model
     'ubicacion',
     'departamento'
   ];
+
+  public function historial(){
+    return $this->morphOne(Historial::class,'historiable');
+}
   public function mantenimiento(){
     return $this->morphOne(Mantenimiento::class,'mantenible');
   }
   
   protected static function booted()
-    {
-        static::deleting(function ($telefono) {
-            $telefono->mantenimiento()->delete();
-        });
-    }
+  {
+      static::deleting(function ($telefono) {
+          $telefono->mantenimiento()->delete();
+          if ($telefono->historial) {
+              $telefono->historial()->delete();
+          }
+      });
+  }
 
     public function scopeFilter($query, $search)
     {

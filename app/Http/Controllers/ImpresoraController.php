@@ -73,7 +73,7 @@ class ImpresoraController extends Controller
 
     public function destroy(Impresora $impresora)
     {
-        \DB::table('historial')->where('serial', $impresora->serial)->delete();
+        
         $impresora->delete();
         return redirect()->route('impresoras.index')->with('delete_success', 'Impresora Eliminada')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }

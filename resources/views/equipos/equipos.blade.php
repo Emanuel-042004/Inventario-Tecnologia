@@ -80,7 +80,7 @@
                     <div class="card-header mb-4">
                         <h4 class="card-title "><strong>Cod Interno:</strong>
                             {{$equipo->serial}}
-                            <a href="{{ route('historial.index', $equipo->id) }}"
+                            <a href="{{ route('historiales.index', ['tipo' => 'equipos', 'id' => $equipo->id]) }}"
                                 class="btn btn-danger float-end shadow" style="border-radius: 50px;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                     class="bi bi-gear-wide" viewBox="0 0 16 16">

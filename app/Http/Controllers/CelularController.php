@@ -73,7 +73,7 @@ class CelularController extends Controller
 
     public function destroy(Celular $celular)
     {
-       \DB::table('historial')->where('serial', $celular->serial)->delete();
+       
         $celular->delete();
         return redirect()->route('celulares.index')->with('delete_success', 'Celular eliminado con éxito')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }

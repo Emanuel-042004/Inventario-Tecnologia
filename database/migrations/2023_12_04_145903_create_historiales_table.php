@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-            Schema::create('historial', function (Blueprint $table) {
+            Schema::create('historiales', function (Blueprint $table) {
                 $table->id();
                 $table->date('fecha');
                 $table->string('descripcion');
-                $table->string('serial'); // Campo de clave externa
+                $table->integer('historiable_id')->unsigned(); 
+                $table->string('historiable_type');
                 $table->timestamps();
             });
       
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('historial');
+        Schema::dropIfExists('historiales');
     }
 };

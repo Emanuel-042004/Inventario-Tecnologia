@@ -35,10 +35,17 @@ class Equipo extends Model
     public function mantenimiento(){
         return $this->morphOne(Mantenimiento::class,'mantenible');
     }
+
+    public function historial(){
+        return $this->morphOne(Historial::class,'historiable');
+    }
     protected static function booted()
     {
         static::deleting(function ($equipo) {
             $equipo->mantenimiento()->delete();
+            if ($equipo->historial) {
+                $equipo->historial()->delete();
+            }
         });
     }
 
