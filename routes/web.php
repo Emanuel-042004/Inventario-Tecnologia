@@ -10,6 +10,7 @@ use App\Http\Controllers\TelefonoController;
 use App\Http\Controllers\HistorialTelefonoController;
 use App\Http\Controllers\MantenimientoController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\ExcelHistorialController;
 
 
 
@@ -49,36 +50,16 @@ Route::resource('impresoras', ImpresoraController::class, ['parameters' => [
     'impresoras' => 'impresora'
 ]]);
 
-Route::get('/{impresora}/historial', [HistorialImpresoraController::class, 'index'])->name('impresoras.historial.index');
-Route::post('/{impresora}/historial', [HistorialImpresoraController::class, 'store'])->name('impresoras.historial.store');
-Route::get('/{impresora}/historial/{historialImpresora}/edit', [HistorialImpresoraController::class, 'edit'])->name('impresoras.historial.edit');
-Route::get('/{impresora}/historial/{historialImpresora}', [HistorialImpresoraController::class, 'update'])->name('impresoras.historial.update');
-Route::delete('/{impresora}/historial/{historialImpresora}', [HistorialImpresoraController::class, 'destroy'])->name('impresoras.historial.destroy');
-
-
 
 Route::resource('celulares', CelularController::class, ['parameters' => [
     'celulares' => 'celular'
 ]]);
  
 
-Route::get('/celulares/{celular}/historial', [HistorialCelularController::class, 'index'])->name('celulares.historial.index');
-
-Route::post('/celulares/{celular}/historial', [HistorialCelularController::class, 'store'])->name('celulares.historial.store');
-Route::get('/celulares/{celular}/historial/{historialCelular}/edit', [HistorialCelularController::class, 'edit'])->name('celulares.historial.edit');
-Route::get('/celulares/{celular}/historial/{historialCelular}', [HistorialCelularController::class, 'update'])->name('celulares.historial.update');
-Route::delete('/celulares/{celular}/historial/{historialCelular}', [HistorialCelularController::class, 'destroy'])->name('celulares.historial.destroy');
-
 
 Route::resource('telefonos', TelefonoController::class, ['parameters' => [
     'telefonos' => 'telefono'
 ]]);
-
-Route::get('/telefonos/{telefono}/historial', [HistorialTelefonoController::class, 'index'])->name('telefonos.historial.index');
-Route::post('/telefonos/{telefono}/historial', [HistorialTelefonoController::class, 'store'])->name('telefonos.historial.store');
-Route::get('/telefonos/{telefono}/historial/{historialTelefono}/edit', [HistorialTelefonoController::class, 'edit'])->name('telefonos.historial.edit');
-Route::get('/telefonos/{telefono}/historial/{historialTelefono}', [HistorialTelefonoController::class, 'update'])->name('telefonos.historial.update');
-Route::delete('/telefonos/{telefono}/historial/{historialTelefono}', [HistorialTelefonoController::class, 'destroy'])->name('telefonos.historial.destroy');
 
 // routes/web.php
 Route::resource('mantenimientos', MantenimientoController::class);
@@ -102,6 +83,10 @@ Route::get('/search', [SearchController::class, 'index'])->name('search.index');
 
 
 
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/exportar/{tipo}/{id}', [ExcelHistorialController::class, 'export'])->name('exportar.historial');

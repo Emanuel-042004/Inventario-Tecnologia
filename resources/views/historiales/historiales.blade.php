@@ -118,7 +118,7 @@
         <!-- Tabla de Historial en la parte derecha -->
         <div class="col-md-6">
             @if(count($historiales) > 0)
-            <a href="" class="btn btn-success float-end mb-3 shadow"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0,0,256,256">
+            <a href="{{ route('exportar.historial', ['tipo' => $tipo, 'id' => $id]) }}" class="btn btn-success float-end mb-3 shadow"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0,0,256,256">
                     <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                         stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
                         font-family="none" font-weight="none" font-size="none" text-anchor="none"
