@@ -25,14 +25,22 @@ class HistorialController extends Controller
         $this->middleware('auth');
     }
     public function index($tipo, $id)
-    {
-        $historiable = $this->getHistoriable($tipo, $id);
-    
-        $historiales = $historiable->historial()->get();
+{
+    $historiable = $this->getHistoriable($tipo, $id);
+
+    if (auth()->user()->hasRole('Admin')) {
+        // El usuario es un administrador, muestra todos los registros de historial
         $historiales = $historiable->historial()->paginate(5);
-    
-        return view('historiales.historiales', compact('historiable', 'historiales', 'tipo', 'id'));
+    } else if (auth()->user()->hasRole('Proveedor')) {
+        // El usuario es un proveedor, muestra solo los registros de historial que él mismo hizo
+        $historiales = $historiable->historial()->where('user_id', auth()->id())->paginate(5);
+    } else {
+        // El usuario no tiene un rol reconocido, muestra una lista de historial vacía
+        $historiales = collect([]);
     }
+
+    return view('historiales.historiales', compact('historiable', 'historiales', 'tipo', 'id'));
+}
     
     private function getHistoriable($tipo, $id)
     {
@@ -63,21 +71,25 @@ class HistorialController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request, $tipo, $id)
-    {
-        $historiable = $this->getHistoriable($tipo, $id);
+{
+    $historiable = $this->getHistoriable($tipo, $id);
 
-        // Lógica para almacenar el nuevo mantenimiento en la base de datos
-        $historial = new Historial;
-        $historial->descripcion = $request->input('descripcion');
-        $historial->fecha = $request->input('fecha');
-        // Otras propiedades del mantenimiento según tu modelo
+    // Lógica para almacenar el nuevo mantenimiento en la base de datos
+    $historial = new Historial;
+    $historial->descripcion = $request->input('descripcion');
+    $historial->fecha = $request->input('fecha');
 
-        // Asociar el mantenimiento al modelo mantenido (Equipo, Impresora, etc.)
-        $historiable->historial()->save($historial);
+    // Guarda el ID del usuario actual solo si el usuario tiene el rol 'Proveedor'
+   
+        $historial->user_id = auth()->id();
+    
 
-        return redirect()->route('historiales.index', ['tipo' => $tipo, 'id' => $id])
-            ->with('success', 'Historial creado exitosamente')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
-    }
+    // Asociar el mantenimiento al modelo mantenido (Equipo, Impresora, etc.)
+    $historiable->historial()->save($historial);
+
+    return redirect()->route('historiales.index', ['tipo' => $tipo, 'id' => $id])
+        ->with('success', 'Historial creado exitosamente')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+}
     /**
      * Display the specified resource.
      */

@@ -11,6 +11,7 @@ use App\Http\Controllers\HistorialTelefonoController;
 use App\Http\Controllers\MantenimientoController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ExcelHistorialController;
+use App\Http\Controllers\ExcelMantenimientoController;
 
 
 
@@ -89,4 +90,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/exportar/{tipo}/{id}', [ExcelHistorialController::class, 'export'])->name('exportar.historial');
+Route::get('/exportar/historial/{tipo}/{id}', [ExcelHistorialController::class, 'export'])->name('exportar.historial');
+Route::get('/exportar/mantenimiento/{tipo}/{id}', [ExcelMantenimientoController::class, 'export'])->name('exportar.mantenimiento');

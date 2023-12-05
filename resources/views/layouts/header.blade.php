@@ -24,7 +24,7 @@
         <header class="fixed-top"> <!-- Encabezado fijo -->
             <nav class="navbar navbar-expand-lg navbar-ligth bg-white">
                 <div class="container-fluid shadow">
-                    <a class="navbar-brand " href="#"><img src="{{ asset('imagenes/Logo-dimensiones.png') }}"></a>
+                    <a class="navbar-brand " href="{{ url('/home') }}"><img src="{{ asset('imagenes/Logo-dimensiones.png') }}"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">

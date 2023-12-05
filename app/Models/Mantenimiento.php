@@ -15,5 +15,9 @@ class Mantenimiento extends Model
     public function mantenible(){
         return $this->morphTo();
     }
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
 }

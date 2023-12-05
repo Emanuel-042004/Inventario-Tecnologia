@@ -27,10 +27,17 @@ class MantenimientoController extends Controller
     public function index($tipo, $id)
     {
         $mantenible = $this->getMantenible($tipo, $id);
-    
-        $mantenimientos = $mantenible->mantenimiento()->get();
-        $mantenimientos = $mantenible->mantenimiento()->paginate(5);
-    
+        if (auth()->user()->hasRole('Admin')) {
+            // El usuario es un administrador, muestra todos los registros de historial
+            $mantenimientos = $mantenible->mantenimiento()->paginate(5);
+        } else if (auth()->user()->hasRole('Proveedor')) {
+            // El usuario es un proveedor, muestra solo los registros de mantenimiento que él mismo hizo
+            $mantenimientos = $mantenible->mantenimiento()->where('user_id', auth()->id())->paginate(5);
+        } else {
+            // El usuario no tiene un rol reconocido, muestra una lista de historial vacía
+            $mantenimientos = collect([]);
+        }
+        
         return view('mantenimientos.mantenimientos', compact('mantenible', 'mantenimientos', 'tipo', 'id'));
     }
     
@@ -71,7 +78,7 @@ class MantenimientoController extends Controller
         $mantenimiento->descripcion = $request->input('descripcion');
         $mantenimiento->fecha = $request->input('fecha');
         // Otras propiedades del mantenimiento según tu modelo
-
+        $mantenimiento->user_id = auth()->id();
         // Asociar el mantenimiento al modelo mantenido (Equipo, Impresora, etc.)
         $mantenible->mantenimiento()->save($mantenimiento);
 

@@ -118,6 +118,7 @@
         <!-- Tabla de Historial en la parte derecha -->
         <div class="col-md-6">
             @if(count($historiales) > 0)
+            @can('exportar.historial')
             <a href="{{ route('exportar.historial', ['tipo' => $tipo, 'id' => $id]) }}" class="btn btn-success float-end mb-3 shadow"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0,0,256,256">
                     <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                         stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
@@ -130,11 +131,13 @@
                         </g>
                     </g>
                 </svg>  Descargar Archivo</a>
+                @endcan
             <table class="table table-striped table-hover table-dark shadow rounded-table">
                 <thead>
                     <tr>
                         <th>Fecha</th>
                         <th>Descripción</th>
+                        <th>Usuario</th> 
                         <th></th>
                     </tr>
                 </thead>
@@ -143,6 +146,7 @@
                     <tr>
                         <td>{{ $historial->fecha }}</td>
                         <td>{{ $historial->descripcion }}</td>
+                        <td>{{ optional($historial->usuario)->name }}</td>
                         <td>
                             <a href="{{ route('historiales.edit', ['tipo' => $tipo, 'id' => $historiable->id, 'historialId' => $historial->id]) }}"
                                 class="btn btn-secondary shadow">Editar</a>

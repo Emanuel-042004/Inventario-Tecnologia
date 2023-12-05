@@ -14,4 +14,8 @@ class Historial extends Model
     public function historiable(){
         return $this->morphTo();
     }
+    public function usuario()
+{
+    return $this->belongsTo(User::class, 'user_id');
+}
 }

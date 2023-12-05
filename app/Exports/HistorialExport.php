@@ -50,18 +50,24 @@ class HistorialExport implements FromCollection, WithStyles
   }
 
   public function collection()
-  {
-    $serial = $this->getSerial($this->tipo, $this->id);
-    $historiales = DB::table('historiales')
-      ->where('historiable_id', $this->id)
-      ->select('id', 'historiable_type', 'fecha', 'descripcion')
-      ->get();
+    {
+        $serial = $this->getSerial($this->tipo, $this->id);
+        $historiales = DB::table('historiales')
+            ->where('historiable_id', $this->id)
+            ->select('id', 'historiable_type', 'fecha', 'descripcion', 'user_id')
+            ->get();
 
-    // Agrega el título y las cabeceras a la colección
-    $historiales->prepend(['Id', 'Tipo', 'Fecha', 'Descripcion']);
-    $historiales->prepend(['', 'Historial de ' . ucfirst($this->tipo) . ' - Serial: ' . $serial, '', '']);
+        // Obtén los nombres de usuario y agrega una nueva columna a la colección
+        $historiales->transform(function ($historial) {
+            $historial->usuario = \App\Models\User::find($historial->user_id)->name;
+            return $historial;
+        });
 
-    return $historiales;
-  }
+        // Agrega el título y las cabeceras a la colección
+        $historiales->prepend(['Id', 'Tipo', 'Fecha', 'Descripcion', 'Usuario-Proveedor']);
+        $historiales->prepend(['', 'Historial de ' . ucfirst($this->tipo) . ' - Serial: ' . $serial, '', '', '']);
+
+        return $historiales;
+    }
 
 }

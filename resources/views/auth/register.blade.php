@@ -14,7 +14,20 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
+                        <div class="mb-3">
+                            <label for="role" class="form-label">{{ __('Rol') }}</label>
+                            <select id="role" class="form-control @error('role') is-invalid @enderror" name="role"
+                                required>
+                                <option value="Admin">Admin</option>
+                                <option value="Proveedor">Proveedor</option>
+                            </select>
 
+                            @error('role')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
                         <div class="mb-3">
                             <label for="name" class="form-label">{{ __('Nombre') }}</label>
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
