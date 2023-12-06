@@ -53,20 +53,15 @@ class MantenimientosExport implements FromCollection, WithStyles
     public function collection()
       {
           $serial = $this->getSerial($this->tipo, $this->id);
+          $tipoSinUltimaLetra = substr($this->tipo, 0, -1);
           $mantenimientos = DB::table('mantenimientos')
-              ->where('mantenible_id', $this->id)
-              ->select('id', 'mantenible_type', 'fecha', 'descripcion', 'user_id')
-              ->get();
-  
-          // Obtén los nombres de usuario y agrega una nueva columna a la colección
-          $mantenimientos->transform(function ($mantenimiento) {
-              $mantenimiento->usuario = \App\Models\User::find($mantenimiento->user_id)->name;
-              return $mantenimiento;
-          });
-  
-          // Agrega el título y las cabeceras a la colección
+          ->join('users', 'mantenimientos.user_id', '=', 'users.id')
+          ->where('mantenimientos.mantenible_id', $this->id)
+          ->where('mantenible_type', 'App\\Models\\' . ucfirst($tipoSinUltimaLetra))
+          ->select('mantenimientos.id', 'mantenimientos.mantenible_type', 'mantenimientos.fecha', 'mantenimientos.descripcion', 'users.name as nombre_usuario')
+          ->get();
           $mantenimientos->prepend(['Id', 'Tipo', 'Fecha', 'Descripcion', 'Usuario-Proveedor']);
-          $mantenimientos->prepend(['', 'Mantenimientos de ' . ucfirst($this->tipo) . ' - Serial: ' . $serial, '', '', '']);
+          $mantenimientos->prepend(['', 'Mantenimientos de ' . ucfirst($tipoSinUltimaLetra) . ' - Serial: ' . $serial, '', '', '']);
   
           return $mantenimientos;
       }

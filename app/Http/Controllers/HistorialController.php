@@ -53,7 +53,7 @@ class HistorialController extends Controller
                 return Celular::find($id);
             case 'telefonos':
                 return Telefono::find($id);
-            // Agrega más casos según tus modelos
+           
             default:
                 abort(404); // Manejar el caso en que el tipo no coincide con ningún modelo
         }

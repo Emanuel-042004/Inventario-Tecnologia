@@ -23,7 +23,7 @@ class HistorialExport implements FromCollection, WithStyles
 
   public function styles(Worksheet $sheet)
   {
-    // Personaliza los estilos según tus necesidades
+    
     return [
       'A1:Z1' => [
         'font' => [
