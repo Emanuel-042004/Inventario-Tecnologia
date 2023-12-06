@@ -10,6 +10,7 @@ use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 
+
 class HistorialExport implements FromCollection, WithStyles
 {
   protected $tipo;
@@ -49,25 +50,23 @@ class HistorialExport implements FromCollection, WithStyles
     }
   }
 
+  
+
   public function collection()
     {
         $serial = $this->getSerial($this->tipo, $this->id);
+        $tipoSinUltimaLetra = substr($this->tipo, 0, -1);
         $historiales = DB::table('historiales')
-            ->where('historiable_id', $this->id)
-            ->select('id', 'historiable_type', 'fecha', 'descripcion', 'user_id')
+            ->join('users', 'historiales.user_id', '=', 'users.id')
+            ->where('historiales.historiable_id', $this->id)
+            ->where('historiable_type', 'App\\Models\\' . ucfirst($tipoSinUltimaLetra))
+            ->select('historiales.id', 'historiales.historiable_type', 'historiales.fecha', 'historiales.descripcion', 'users.name as nombre_usuario')
             ->get();
-
-        // Obtén los nombres de usuario y agrega una nueva columna a la colección
-        $historiales->transform(function ($historial) {
-            $historial->usuario = \App\Models\User::find($historial->user_id)->name;
-            return $historial;
-        });
-
-        // Agrega el título y las cabeceras a la colección
-        $historiales->prepend(['Id', 'Tipo', 'Fecha', 'Descripcion', 'Usuario-Proveedor']);
-        $historiales->prepend(['', 'Historial de ' . ucfirst($this->tipo) . ' - Serial: ' . $serial, '', '', '']);
+        $historiales->prepend(['Id', 'Tipo', 'Fecha', 'Descripcion', 'Usuario - Proveedor']);
+        $historiales->prepend(['', 'Historial de ' . ucfirst($tipoSinUltimaLetra) . ' - Serial: ' . $serial, '', '', '']);
 
         return $historiales;
     }
+  
 
 }
