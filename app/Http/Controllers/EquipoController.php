@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Models\Mantenimiento;
-
+use Illuminate\Support\Facades\Auth;
 class EquipoController extends Controller
 {
     /**
@@ -21,6 +21,10 @@ class EquipoController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:equipos.index')->only('index');
+        $this->middleware('can:equipos.create')->only('create', 'store');
+        $this->middleware('can:equipos.edit')->only('edit', 'update');
+        $this->middleware('can:equipos.destroy')->only('destroy');
     }
  
     public function index(Request $request): View

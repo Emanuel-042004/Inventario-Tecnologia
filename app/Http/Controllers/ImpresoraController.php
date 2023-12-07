@@ -6,6 +6,7 @@ use App\Models\Impresora;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class ImpresoraController extends Controller
 {
@@ -17,6 +18,11 @@ class ImpresoraController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:impresoras.index')->only('index');
+        $this->middleware('can:impresoras.create')->only('create', 'store');
+        $this->middleware('can:impresoras.edit')->only('edit', 'update');
+        $this->middleware('can:impresoras.destroy')->only('destroy');
+    
     }
 
     public function index(Request $request): View

@@ -6,6 +6,8 @@ use App\Models\Telefono;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+
 
 class TelefonoController extends Controller
 {
@@ -20,6 +22,11 @@ class TelefonoController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:telefonos.index')->only('index');
+        $this->middleware('can:telefonos.create')->only('create', 'store');
+        $this->middleware('can:telefonos.edit')->only('edit', 'update');
+        $this->middleware('can:telefonos.destroy')->only('destroy');
+    
     }
     public function index(Request $request)
     {

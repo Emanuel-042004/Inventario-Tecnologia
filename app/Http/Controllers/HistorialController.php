@@ -55,7 +55,7 @@ class HistorialController extends Controller
                 return Telefono::find($id);
            
             default:
-                abort(404); // Manejar el caso en que el tipo no coincide con ningún modelo
+                abort(404);
         }
     }
  
@@ -74,17 +74,11 @@ class HistorialController extends Controller
 {
     $historiable = $this->getHistoriable($tipo, $id);
 
-    // Lógica para almacenar el nuevo mantenimiento en la base de datos
+    
     $historial = new Historial;
     $historial->descripcion = $request->input('descripcion');
     $historial->fecha = $request->input('fecha');
-
-    // Guarda el ID del usuario actual solo si el usuario tiene el rol 'Proveedor'
-   
-        $historial->user_id = auth()->id();
-    
-
-    // Asociar el mantenimiento al modelo mantenido (Equipo, Impresora, etc.)
+    $historial->user_id = auth()->id();
     $historiable->historial()->save($historial);
 
     return redirect()->route('historiales.index', ['tipo' => $tipo, 'id' => $id])
@@ -105,7 +99,6 @@ class HistorialController extends Controller
     {
         $historiable = $this->getHistoriable($tipo, $id);
         $historial = Historial::findOrFail($historialId);
-
         return view('historiales.edit', compact('historiable', 'historial', 'tipo', 'id'));
     }
 
@@ -113,12 +106,8 @@ class HistorialController extends Controller
     {
         $historiable = $this->getHistoriable($tipo, $id);
         $historial = Historial::findOrFail($historialId);
-
-        // Lógica para actualizar el mantenimiento en la base de datos
         $historial->descripcion = $request->input('descripcion');
         $historial->fecha = $request->input('fecha');
-        // Otras propiedades del mantenimiento según tu modelo
-
         $historial->save();
 
         return redirect()->route('historiales.index', ['tipo' => $tipo, 'id' => $id])
@@ -132,8 +121,6 @@ class HistorialController extends Controller
     {
         $historiable = $this->getHistoriable($tipo, $id);
         $historial = Historial::findOrFail($historialId);
-    
-        // Eliminar el mantenimiento de la base de datos
         $historial->delete();
     
         return redirect()->route('historiales.index', ['tipo' => $tipo, 'id' => $id])

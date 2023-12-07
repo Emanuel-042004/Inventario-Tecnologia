@@ -6,6 +6,8 @@ use App\Models\Celular;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+
 
 class CelularController extends Controller
 {
@@ -17,6 +19,11 @@ class CelularController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:celulares.index')->only('index');
+        $this->middleware('can:celulares.create')->only('create', 'store');
+        $this->middleware('can:celulares.edit')->only('edit', 'update');
+        $this->middleware('can:celulares.destroy')->only('destroy');
+    
     }
     public function index(Request $request)
     {
