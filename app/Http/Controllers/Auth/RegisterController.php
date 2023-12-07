@@ -39,7 +39,10 @@ class RegisterController extends Controller
      *
      * @return void
      */
-   
+   /* public function __construct()
+    {
+        $this->middleware('guest');
+    }*/
     /**
      * Get a validator for an incoming registration request.
      *
@@ -78,7 +81,7 @@ class RegisterController extends Controller
         return $user;
     }
 
-    public function showRegistrationForm()
+  public function showRegistrationForm()
     {
         // Verifica si el usuario tiene el rol correcto antes de mostrar el formulario
         if (!auth()->check() || !auth()->user()->hasRole('Admin')) {

@@ -9,6 +9,8 @@ use App\Models\Equipo;
 use App\Models\Impresora;
 use App\Models\Celular;
 use App\Models\Telefono;
+use App\Mail\HistorialCreado;
+use Illuminate\Support\Facades\Mail;
 
 class HistorialController extends Controller
 {
@@ -80,6 +82,11 @@ class HistorialController extends Controller
     $historial->fecha = $request->input('fecha');
     $historial->user_id = auth()->id();
     $historiable->historial()->save($historial);
+
+    $destinatarioEmail = ['auxiliarsistemas@losretales.co', 'charagomezemanuel@gmail.com'];
+    
+        // Envío del correo electrónico al destinatario específico
+        Mail::to($destinatarioEmail)->send(new HistorialCreado(auth()->user(), $historial, $tipo, $historiable->serial));
 
     return redirect()->route('historiales.index', ['tipo' => $tipo, 'id' => $id])
         ->with('success', 'Historial creado exitosamente')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');

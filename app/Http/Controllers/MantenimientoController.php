@@ -9,6 +9,8 @@ use App\Models\Equipo;
 use App\Models\Impresora;
 use App\Models\Celular;
 use App\Models\Telefono;
+use App\Mail\MantenimientoCreado;
+use Illuminate\Support\Facades\Mail;
 
 class MantenimientoController extends Controller
 {
@@ -72,19 +74,29 @@ class MantenimientoController extends Controller
     public function store(Request $request, $tipo, $id)
     {
         $mantenible = $this->getMantenible($tipo, $id);
-
+    
         // Lógica para almacenar el nuevo mantenimiento en la base de datos
         $mantenimiento = new Mantenimiento;
         $mantenimiento->descripcion = $request->input('descripcion');
         $mantenimiento->fecha = $request->input('fecha');
-        // Otras propiedades del mantenimiento según tu modelo
         $mantenimiento->user_id = auth()->id();
+    
         // Asociar el mantenimiento al modelo mantenido (Equipo, Impresora, etc.)
         $mantenible->mantenimiento()->save($mantenimiento);
-
+    
+        // Establecer el destinatario del correo electrónico
+        $destinatarioEmail = ['auxiliarsistemas@losretales.co', 'charagomezemanuel@gmail.com'];
+    
+        // Envío del correo electrónico al destinatario específico
+        Mail::to($destinatarioEmail)->send(new MantenimientoCreado(auth()->user(), $mantenimiento, $tipo, $mantenible->serial));
+        
+        // Resto del código...
+    
         return redirect()->route('mantenimientos.index', ['tipo' => $tipo, 'id' => $id])
-            ->with('success', 'Mantenimiento creado exitosamente')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+            ->with('success', 'Mantenimiento creado exitosamente')
+            ->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
+    
     /**
      * Display the specified resource.
      */
