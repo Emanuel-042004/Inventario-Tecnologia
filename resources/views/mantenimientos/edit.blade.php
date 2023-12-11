@@ -37,6 +37,7 @@
                 <div class="mb-3">
                     <label for="descripcion" class="form-label">Descripción:</label>
                     <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required>{{ $mantenimiento->descripcion }}</textarea>
+                    <div id="contador-caracteres" class="text-muted">{{ strlen($mantenimiento->descripcion) }}/600 caracteres</div>
                 </div>
                 <button type="submit" class="btn btn-primary">Actualizar Mantenimiento</button>
             </form>
@@ -53,6 +54,23 @@
             </div>
         </div>
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var textarea = document.getElementById('descripcion');
+        var contador = document.getElementById('contador-caracteres');
+
+        textarea.addEventListener('input', function () {
+            var longitud = textarea.value.length;
+            contador.textContent = longitud + '/600 caracteres';
+
+            // Limitar la longitud de la descripción a 600 caracteres
+            if (longitud > 600) {
+                textarea.value = textarea.value.slice(0, 600);
+                contador.textContent = '600/600 caracteres';
+            }
+        });
+    });
+</script>
 </div>
 
 @endsection

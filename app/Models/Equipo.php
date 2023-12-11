@@ -13,6 +13,8 @@ class Equipo extends Model
         'serial',
         'marca',
         'tipo_equipo',
+        'tipo_dispositivo',
+        's_n',
         'modelo',
         'anydesk',
         'tipo_ram',
@@ -70,6 +72,7 @@ class Equipo extends Model
             ->orWhere('direccionIP', 'like', '%' . $search . '%')
             ->orWhere('tarjeta_grafica', 'like', '%' . $search . '%')
             ->orWhere('ubicacion', 'like', '%' . $search . '%')
+            ->orWhere('s_n', 'like', '%' . $search . '%')
             ->orWhere('encargado', 'like', '%' . $search . '%');
         }
         return $query;

@@ -21,6 +21,12 @@
                 <input type="text" class="form-control shadow" id="serial" name="serial" value="{{ $telefono->serial }}"
                   required>
               </div>
+
+              <div class="mb-3">
+                <label for="serie" class="form-label">Serial:</label>
+                <input type="text" class="form-control shadow" id="serie" name="serie" value="{{ $telefono->serie }}"
+                  required>
+              </div>
               <div class="mb-3">
                 <label for="marca" class="form-label">Marca:</label>
                 <input type="text" class="form-control shadow" id="marca" name="marca" value="{{ $telefono->marca }}">

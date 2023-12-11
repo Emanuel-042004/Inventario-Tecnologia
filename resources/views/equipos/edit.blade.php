@@ -24,7 +24,12 @@
           value="{{$equipo->serial}}">
       </div>
     </div>
-
+    <div class="col-md-6">
+    <div class="mb-3">
+        <label for="s_n" class="form-label">S/N</label>
+        <input type="text" class="form-control shadow" id="s_n" name="s_n" step="0.01" value="{{$equipo->s_n}}">
+      </div>
+    </div>
     <div class="col-md-6">
       <div class="mb-3">
         <label for="marca" class="form-label">Marca</label>

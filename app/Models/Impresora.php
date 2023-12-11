@@ -11,6 +11,7 @@ class Impresora extends Model
     protected $fillable = [
         'serial',
         'modelo',
+        'marca',
         'proveedor',
         'tipo',
         'ubicacion',
@@ -42,6 +43,7 @@ class Impresora extends Model
             $query->where('serial', 'like', '%' . $search . '%')
                   ->orWhere('codigo', 'like', '%' . $search . '%')
                   ->orWhere('modelo', 'like', '%' . $search . '%')
+                  ->orWhere('marca', 'like', '%' . $search . '%')
                   ->orWhere('proveedor', 'like', '%' . $search . '%')
                   ->orWhere('tipo', 'like', '%' . $search . '%')
                   ->orWhere('tipo_toner', 'like', '%' . $search . '%')

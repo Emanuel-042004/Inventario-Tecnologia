@@ -23,12 +23,17 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="marca" class="form-label">Marca:</label>
+                        <input type="text" class="form-control shadow" id="marca" name="marca" >
+                    </div>
+
+                    <div class="mb-3">
                         <label for="modelo" class="form-label">Modelo:</label>
                         <input type="text" class="form-control shadow" id="modelo" name="modelo" >
                     </div>
 
                     <div class="mb-3">
-                        <label for="codigo" class="form-label">Codigo:</label>
+                        <label for="codigo" class="form-label"> Serie:</label>
                         <input type="text" class="form-control shadow" id="codigo" name="codigo" >
                     </div>
 

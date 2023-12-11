@@ -17,6 +17,12 @@
                 <label for="serial" class="form-label">Codigo Interno:</label>
                 <input type="text" class="form-control shadow" id="serial" name="serial" required>
               </div>
+
+              <div class="mb-3">
+                <label for="serie" class="form-label">Serial:</label>
+                <input type="text" class="form-control shadow" id="serie" name="serie" required>
+              </div>
+
               <div class="mb-3">
                 <label for="marca" class="form-label">Marca:</label>
                 <input type="text" class="form-control shadow" id="marca" name="marca">

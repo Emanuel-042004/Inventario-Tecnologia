@@ -109,6 +109,7 @@
                     <label for="descripcion" class="form-label">Descripción</label>
                     <textarea class="form-control shadow" id="descripcion" name="descripcion" rows="3"
                         required></textarea>
+                        <div id="contador-caracteres" class="text-muted">0/600 caracteres</div>
                 </div>
                 <button type="submit" class="btn btn-danger shadow" style="margin-bottom: 30px;">Agregar
                     Historial</button>
@@ -181,6 +182,23 @@
             </div>
         </div>
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var textarea = document.getElementById('descripcion');
+        var contador = document.getElementById('contador-caracteres');
+
+        textarea.addEventListener('input', function () {
+            var longitud = textarea.value.length;
+            contador.textContent = longitud + '/600 caracteres';
+
+            // Limitar la longitud de la descripción a 600 caracteres
+            if (longitud > 600) {
+                textarea.value = textarea.value.slice(0, 600);
+                contador.textContent = '600/600 caracteres';
+            }
+        });
+    });
+</script>
 </div>
 
 

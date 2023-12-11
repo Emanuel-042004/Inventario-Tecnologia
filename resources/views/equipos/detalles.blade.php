@@ -10,6 +10,7 @@
                 <ul class="list-unstyled">
                     <h4 style="color:rgb(204, 39, 39);"><strong>Datos de Equipo</strong></h4>
                     <li><strong>CODIGO INTERNO:</strong> {{ $equipo->serial }}</li>
+                    <li><strong>S/N:</strong> {{ $equipo->s_n }}</li>
                     <li><strong>MARCA:</strong> {{ $equipo->marca }}</li>
                     <li><strong>TIPO DE EQUIPO:</strong> {{ $equipo->tipo_equipo }}</li>
                     <li><strong>TIPO DE DISPOSITIVO:</strong> {{ $equipo->tipo_dispositivo}}</li>

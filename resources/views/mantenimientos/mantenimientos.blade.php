@@ -75,9 +75,11 @@
             <input type="date" class="form-control" id="fecha" name="fecha" required>
         </div>
         <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripción:</label>
-            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
-        </div>
+    <label for="descripcion" class="form-label">Descripción:</label>
+    <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+    <div id="contador-caracteres" class="text-muted">0/600 caracteres</div>
+</div>
+
         <button type="submit" class="btn btn-primary">Agregar Mantenimiento</button>
     </form>
     
@@ -155,5 +157,22 @@
             });
         });
     </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var textarea = document.getElementById('descripcion');
+        var contador = document.getElementById('contador-caracteres');
+
+        textarea.addEventListener('input', function () {
+            var longitud = textarea.value.length;
+            contador.textContent = longitud + '/600 caracteres';
+
+            // Limitar la longitud de la descripción a 250 caracteres
+            if (longitud > 600) {
+                textarea.value = textarea.value.slice(0, 600);
+                contador.textContent = '600/600 caracteres';
+            }
+        });
+    });
+</script>
 </div>
 @endsection

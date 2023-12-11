@@ -103,6 +103,7 @@
           </div>
 
           <div class="card-body">
+            <p class="card-text text-black"><strong>Serial:</strong> {{$telefono->serie}}</p>
             <p class="card-text text-black"><strong>Modelo:</strong> {{$telefono->modelo}}</p>
             <p class="card-text text-black"><strong>Marca:</strong> {{$telefono->marca}}</p>
             <p class="card-text text-black"><strong>IP:</strong> {{$telefono->ip}}</p>

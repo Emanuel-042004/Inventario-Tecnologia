@@ -31,6 +31,17 @@
     </div>
 
     <!--ALERTAS-->
+
+    @if (Session::has('register_success'))
+    <script>
+        Swal.fire({
+            title: '¡Éxito!',
+            text: '{{ Session::get('register_success') }}',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        })
+    </script>
+@endif
     @if (Session::has('success'))
     <script>
         Swal.fire({
@@ -95,9 +106,8 @@
                     <div class="card-body">
                         <p class="card-text text-black"><strong>Encargado:</strong> {{$equipo->encargado}}</p>
                         <p class="card-text text-black"><strong>Ubicacion:</strong> {{$equipo->ubicacion}}</p>
-                        <p class="card-text text-black"><strong>Tipo de Equipo:</strong> {{$equipo->tipo_equipo}}
-                        <p class="card-text text-black"><strong>Tipo de Dispositivo:</strong>
-                            {{$equipo->tipo_dispositivo}}</p>
+                        <p class="card-text text-black"><strong>Tipo de Equipo:</strong> {{$equipo->tipo_equipo}}</p>
+                        <p class="card-text text-black"><strong>Tipo de Dispositivo:</strong> {{$equipo->tipo_dispositivo}}</p>
                         
                         @can('equipos.edit')
                         <!--BOTON EDITAR -->

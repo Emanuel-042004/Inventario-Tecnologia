@@ -12,6 +12,7 @@ class Telefono extends Model
     protected $fillable = [
     'marca',
     'serial',
+    'serie',
     'modelo',
     'ip',
     'extension',
@@ -41,6 +42,7 @@ class Telefono extends Model
         if ($search) {
             $query->where('serial', 'like', '%' . $search . '%')
                   ->orWhere('extension', 'like', '%' . $search . '%')
+                  ->orWhere('serie', 'like', '%' . $search . '%')
                   ->orWhere('ubicacion', 'like', '%' . $search . '%')
                   ->orWhere('marca', 'like', '%' . $search . '%')
                   ->orWhere('modelo', 'like', '%' . $search . '%')

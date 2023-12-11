@@ -93,8 +93,9 @@
                     </div>
 
                     <div class="card-body">
+                        <p class="card-text text-black"><strong>Marca:</strong> {{$impresora->marca}}</p>
                         <p class="card-text text-black"><strong>Modelo:</strong> {{$impresora->modelo}}</p>
-                        <p class="card-text text-black"><strong>Codigo:</strong> {{$impresora->codigo}}</p>
+                        <p class="card-text text-black"><strong>Serie:</strong> {{$impresora->codigo}}</p>
                         <p class="card-text text-black"><strong>Tipo de Impresora:</strong> {{$impresora->tipo}}</p>
                         <p class="card-text text-black"><strong>Ubicacion:</strong> {{$impresora->ubicacion}}</p>
                         <p class="card-text text-black"><strong>Tipo de Toner:</strong> {{$impresora->tipo_toner}}</p>
