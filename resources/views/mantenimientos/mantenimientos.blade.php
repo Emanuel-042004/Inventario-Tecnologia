@@ -80,7 +80,7 @@
     <div id="contador-caracteres" class="text-muted">0/600 caracteres</div>
 </div>
 
-        <button type="submit" class="btn btn-primary" id="agregar-mantenimiento-btn">Agregar Mantenimiento</button>
+        <button type="submit" class="btn btn-danger" id="agregar-mantenimiento-btn">Agregar Mantenimiento</button>
     </form>
     </div>
     <div id="loading-message" style="display: none;">
@@ -119,7 +119,7 @@
                 <td>{{ optional($mantenimiento->usuario)->name }}</td>
                 <td>
                     <a href="{{ route('mantenimientos.edit', ['tipo' => $tipo, 'id' => $mantenible->id, 'mantenimientoId' => $mantenimiento->id]) }}"
-                        class="btn btn-warning">Editar</a>
+                        class="btn btn-dark">Editar</a>
 
                     <form
                         action="{{ route('mantenimientos.destroy', ['tipo' => $tipo, 'id' => $id, 'mantenimientoId' => $mantenimiento->id]) }}"

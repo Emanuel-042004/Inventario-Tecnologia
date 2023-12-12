@@ -83,7 +83,7 @@ class HistorialController extends Controller
     $historial->user_id = auth()->id();
     $historiable->historial()->save($historial);
 
-    $destinatarioEmail = ['auxiliarsistemas2@losretales.co'];
+    $destinatarioEmail = ['auxiliarsistemas@losretales.co', 'coordinador.sistemas@losretales.co','auxiliarsistemas2@losretales.co'];
     
         // Envío del correo electrónico al destinatario específico
         Mail::to($destinatarioEmail)->send(new HistorialCreado(auth()->user(), $historial, $tipo, $historiable->serial));

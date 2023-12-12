@@ -2,45 +2,58 @@
 
 @section('content')
 @php
-    $tipoObjeto = '';
-    switch ($tipo) {
-        case 'equipos':
-            $tipoObjeto = 'del Equipo';
-            break;
-        case 'impresoras':
-            $tipoObjeto = 'de la Impresora';
-            break;
-        case 'celulares':
-            $tipoObjeto = 'del Celular';
-            break;
-        case 'telefonos':
-            $tipoObjeto = 'del Telefono';
-            break;
-    }
+$tipoObjeto = '';
+switch ($tipo) {
+case 'equipos':
+$tipoObjeto = 'del Equipo';
+break;
+case 'impresoras':
+$tipoObjeto = 'de la Impresora';
+break;
+case 'celulares':
+$tipoObjeto = 'del Celular';
+break;
+case 'telefonos':
+$tipoObjeto = 'del Telefono';
+break;
+}
 @endphp
 
 <div class="container mt-4">
     <h1 style="color: black;">Editar Mantenimiento {{ $tipoObjeto }}: {{ $mantenible->serial }}</h1>
-    
-    <a href="{{ route('mantenimientos.index', ['tipo' => $tipo, 'id' => $mantenible->id]) }}" class="btn btn-dark shadow">Volver</a>
+
+    <a href="{{ route('mantenimientos.index', ['tipo' => $tipo, 'id' => $mantenible->id]) }}"
+        class="btn btn-dark shadow">Volver</a>
 
     <div class="row">
         <!-- Formulario para editar mantenimiento -->
         <div class="col-md-6" style="margin-top: 35px;">
-            <form action="{{ route('mantenimientos.update', ['tipo' => $tipo, 'id' => $mantenible->id, 'mantenimientoId' => $mantenimiento->id]) }}" method="POST" class="mb-4">
-                @csrf
-                @method('PUT')  
-                <div class="mb-3">
-                    <label for="fecha" class="form-label">Fecha:</label>
-                    <input type="date" class="form-control" id="fecha" name="fecha" value="{{ $mantenimiento->fecha }}" required>
-                </div>
-                <div class="mb-3">
-                    <label for="descripcion" class="form-label">Descripción:</label>
-                    <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required>{{ $mantenimiento->descripcion }}</textarea>
-                    <div id="contador-caracteres" class="text-muted">{{ strlen($mantenimiento->descripcion) }}/600 caracteres</div>
-                </div>
-                <button type="submit" class="btn btn-primary">Actualizar Mantenimiento</button>
-            </form>
+            <div id="editar-mantenimiento-form-container">
+                <form
+                    action="{{ route('mantenimientos.update', ['tipo' => $tipo, 'id' => $mantenible->id, 'mantenimientoId' => $mantenimiento->id]) }}"
+                    method="POST" class="mb-4">
+                    @csrf
+                    @method('PUT')
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label">Fecha:</label>
+                        <input type="date" class="form-control" id="fecha" name="fecha"
+                            value="{{ $mantenimiento->fecha }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción:</label>
+                        <textarea class="form-control" id="descripcion" name="descripcion" rows="3"
+                            required>{{ $mantenimiento->descripcion }}</textarea>
+                        <div id="contador-caracteres" class="text-muted">{{ strlen($mantenimiento->descripcion) }}/600
+                            caracteres</div>
+                    </div>
+                    <button type="submit" class="btn btn-danger" id="editar-mantenimiento-btn">Editar
+                        Mantenimiento</button>
+                </form>
+            </div>
+            <div id="loading-message" style="display: none;">
+                Cargando...
+            </div>
+
         </div>
 
         <!-- Detalles del Mantenimiento -->
@@ -55,22 +68,37 @@
         </div>
     </div>
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var textarea = document.getElementById('descripcion');
-        var contador = document.getElementById('contador-caracteres');
+        document.addEventListener('DOMContentLoaded', function () {
+            var textarea = document.getElementById('descripcion');
+            var contador = document.getElementById('contador-caracteres');
 
-        textarea.addEventListener('input', function () {
-            var longitud = textarea.value.length;
-            contador.textContent = longitud + '/600 caracteres';
+            textarea.addEventListener('input', function () {
+                var longitud = textarea.value.length;
+                contador.textContent = longitud + '/600 caracteres';
 
-            // Limitar la longitud de la descripción a 600 caracteres
-            if (longitud > 600) {
-                textarea.value = textarea.value.slice(0, 600);
-                contador.textContent = '600/600 caracteres';
-            }
+                // Limitar la longitud de la descripción a 600 caracteres
+                if (longitud > 600) {
+                    textarea.value = textarea.value.slice(0, 600);
+                    contador.textContent = '600/600 caracteres';
+                }
+            });
         });
-    });
-</script>
+    </script>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var formContainer = document.getElementById('editar-mantenimiento-form-container');
+            var loadingMessage = document.getElementById('loading-message');
+            var editarmantenimientoBtn = document.getElementById('editar-mantenimiento-btn');
+
+            // Escuchar el envío del formulario
+            formContainer.addEventListener('submit', function () {
+                // Ocultar el botón y mostrar el mensaje de carga
+                editarmantenimientoBtn.style.display = 'none';
+                loadingMessage.style.display = 'block';
+            });
+        });
+    </script>
 </div>
 
 @endsection
