@@ -146,15 +146,15 @@ hr {
   color: white;
 }*/
 
-.search-form {
+/*.search-form {
   display: flex;
   align-items: center;
   background-color: #000000;
   border: 1px solid #000000;
   border-radius: 25px;
   padding: 5px;
-  max-width: 300px; /* Set a maximum width for the search bar */
-  margin: 0 auto; /* Center the search bar */
+  max-width: 300px; 
+  margin: 0 auto; 
 }
 
 .search-input {
@@ -180,7 +180,7 @@ hr {
 .search-button:hover {
   background-color: #c01313;
   color: white;
-}
+}*/
 
 .rounded-table {
   border-radius: 10px; /* Ajusta el valor según tu preferencia */
