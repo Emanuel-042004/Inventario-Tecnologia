@@ -85,7 +85,7 @@ class MantenimientoController extends Controller
         $mantenible->mantenimiento()->save($mantenimiento);
     
         // Establecer el destinatario del correo electrónico
-        $destinatarioEmail = ['charagomezemanuel@gmail.com', 'auxiliarsistemas2@losretales.co'];
+        $destinatarioEmail = ['auxiliarsistemas@losretales.co', 'coordinador.sistemas@losretales.co','auxiliarsistemas2@losretales.co'];
     
         // Envío del correo electrónico al destinatario específico
         Mail::to($destinatarioEmail)->send(new MantenimientoCreado(auth()->user(), $mantenimiento, $tipo, $mantenible->serial));
