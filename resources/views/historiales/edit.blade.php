@@ -37,9 +37,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="descripcion" class="form-label">Descripción</label>
-                    <textarea class="form-control shadow" id="descripcion" name="descripcion" rows="3" value="{{ $historial->descripcion }}"
-                        required></textarea>
-                        <div id="contador-caracteres" class="text-muted">0/600 caracteres</div>
+                    <textarea class="form-control shadow" id="descripcion" name="descripcion" rows="3" 
+                        required>{{ $historial->descripcion }}</textarea>
+                        <div id="contador-caracteres" class="text-muted">{{ strlen($historial->descripcion) }}/600
+                            caracteres</div>
+                    
                 </div>
                 <button type="submit" class="btn btn-danger shadow" style="margin-bottom: 30px;" id="editar-historial-btn">Guardar Cambios</button>
             </form>
