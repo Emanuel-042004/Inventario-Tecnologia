@@ -66,7 +66,7 @@
    <h1 style="color: black;"><strong>Mantenimientos {{ $tipoObjeto }}: {{ $mantenible->serial }}</strong></h1>
     <a href="{{ route($tipo . '.index') }}" class="btn btn-dark shadow mb-4">Volver</a>
 
-
+    <div id="mantenimiento-form-container">
     <form action="{{ route('mantenimientos.store', ['tipo' => $tipo, 'id' => $mantenible->id]) }}" method="POST"
         class="mb-4">
         @csrf
@@ -80,8 +80,12 @@
     <div id="contador-caracteres" class="text-muted">0/600 caracteres</div>
 </div>
 
-        <button type="submit" class="btn btn-primary">Agregar Mantenimiento</button>
+        <button type="submit" class="btn btn-primary" id="agregar-mantenimiento-btn">Agregar Mantenimiento</button>
     </form>
+    </div>
+    <div id="loading-message" style="display: none;">
+                Cargando...
+            </div>
     
     @if(count($mantenimientos) > 0)
     @can('exportar.historial')
@@ -174,5 +178,20 @@
         });
     });
 </script>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var formContainer = document.getElementById('mantenimiento-form-container');
+            var loadingMessage = document.getElementById('loading-message');
+            var agregarmantenimientoBtn = document.getElementById('agregar-mantenimiento-btn');
+
+            // Escuchar el envío del formulario
+            formContainer.addEventListener('submit', function () {
+                // Ocultar el botón y mostrar el mensaje de carga
+                agregarmantenimientoBtn.style.display = 'none';
+                loadingMessage.style.display = 'block';
+            });
+        });
+    </script>
 </div>
 @endsection

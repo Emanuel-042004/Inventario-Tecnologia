@@ -98,7 +98,7 @@
     <div class="row">
         <!-- Formulario para Agregar Historial en la parte izquierda -->
         <div class="col-md-6" style="margin-top: 35px;">
-
+        <div id="historial-form-container">
             <form action="{{ route('historiales.store', ['tipo' => $tipo, 'id' => $historiable->id]) }}" method="POST">
                 @csrf
                 <div class="mb-3">
@@ -111,9 +111,13 @@
                         required></textarea>
                         <div id="contador-caracteres" class="text-muted">0/600 caracteres</div>
                 </div>
-                <button type="submit" class="btn btn-danger shadow" style="margin-bottom: 30px;">Agregar
-                    Historial</button>
+                <button type="submit" class="btn btn-danger shadow" style="margin-bottom: 30px;" id="agregar-historial-btn">Agregar Historial</button>
             </form>
+            </div>
+
+            <div id="loading-message" style="display: none;">
+                Cargando...
+            </div>
         </div><br><br>
 
         <!-- Tabla de Historial en la parte derecha -->
@@ -199,6 +203,23 @@
         });
     });
 </script>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var formContainer = document.getElementById('historial-form-container');
+            var loadingMessage = document.getElementById('loading-message');
+            var agregarHistorialBtn = document.getElementById('agregar-historial-btn');
+
+            // Escuchar el envío del formulario
+            formContainer.addEventListener('submit', function () {
+                // Ocultar el botón y mostrar el mensaje de carga
+                agregarHistorialBtn.style.display = 'none';
+                loadingMessage.style.display = 'block';
+            });
+        });
+    </script>
+
+
 </div>
 
 

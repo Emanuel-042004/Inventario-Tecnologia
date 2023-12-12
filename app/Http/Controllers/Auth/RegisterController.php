@@ -22,12 +22,12 @@ class RegisterController extends Controller
 
     protected $redirectTo = RouteServiceProvider::HOME;
 
-      /* @return void*/ 
+      
      
-   /* public function __construct()
+    public function __construct()
     {
         $this->middleware('guest');
-    }*/
+    }
 
     protected function validator(array $data)
     {
@@ -55,7 +55,7 @@ class RegisterController extends Controller
         return $user;
     }
 
-    public function register(Request $request)
+   public function register(Request $request)
     {
         $this->validator($request->all())->validate();
 

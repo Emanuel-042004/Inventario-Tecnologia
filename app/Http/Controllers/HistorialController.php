@@ -83,7 +83,7 @@ class HistorialController extends Controller
     $historial->user_id = auth()->id();
     $historiable->historial()->save($historial);
 
-    $destinatarioEmail = ['auxiliarsistemas@losretales.co', 'coordinador.sistemas@losretales.co','auxiliarsistemas2@losretales.co'];
+    $destinatarioEmail = ['auxiliarsistemas2@losretales.co'];
     
         // Envío del correo electrónico al destinatario específico
         Mail::to($destinatarioEmail)->send(new HistorialCreado(auth()->user(), $historial, $tipo, $historiable->serial));
@@ -115,7 +115,12 @@ class HistorialController extends Controller
         $historial = Historial::findOrFail($historialId);
         $historial->descripcion = $request->input('descripcion');
         $historial->fecha = $request->input('fecha');
-        $historial->save();
+        $historiable->historial()->save($historial);
+
+    $destinatarioEmail = ['auxiliarsistemas@losretales.co', 'coordinador.sistemas@losretales.co','auxiliarsistemas2@losretales.co'];
+    
+        // Envío del correo electrónico al destinatario específico
+        Mail::to($destinatarioEmail)->send(new HistorialCreado(auth()->user(), $historial, $tipo, $historiable->serial));
 
         return redirect()->route('historiales.index', ['tipo' => $tipo, 'id' => $id])
             ->with('success', 'Historial actualizado exitosamente')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');

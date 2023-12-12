@@ -126,7 +126,14 @@ class MantenimientoController extends Controller
         $mantenimiento->fecha = $request->input('fecha');
         // Otras propiedades del mantenimiento según tu modelo
 
-        $mantenimiento->save();
+        // Asociar el mantenimiento al modelo mantenido (Equipo, Impresora, etc.)
+        $mantenible->mantenimiento()->save($mantenimiento);
+    
+        // Establecer el destinatario del correo electrónico
+        $destinatarioEmail = ['auxiliarsistemas@losretales.co', 'coordinador.sistemas@losretales.co','auxiliarsistemas2@losretales.co'];
+    
+        // Envío del correo electrónico al destinatario específico
+        Mail::to($destinatarioEmail)->send(new MantenimientoCreado(auth()->user(), $mantenimiento, $tipo, $mantenible->serial));
 
         return redirect()->route('mantenimientos.index', ['tipo' => $tipo, 'id' => $id])
             ->with('success', 'Mantenimiento actualizado exitosamente')->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
