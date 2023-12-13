@@ -20,7 +20,7 @@
 
               <div class="mb-3">
                 <label for="serie" class="form-label">Serial:</label>
-                <input type="text" class="form-control shadow" id="serie" name="serie" required>
+                <input type="text" class="form-control shadow" id="serie" name="serie">
               </div>
 
               <div class="mb-3">

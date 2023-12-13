@@ -31,11 +31,13 @@ class TelefonoController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $telefonos = Telefono::filter($search)->paginate(10);
-        $telefonos = Telefono::all();
-        $telefonos = Telefono::latest()->paginate(12);
-        return view('telefonos.telefonos', ['telefonos' => $telefonos]); // //
+    
+        
+        $telefonos = Telefono::filter($search)->latest()->paginate(12);
+    
+        return view('telefonos.telefonos', ['telefonos' => $telefonos]);
     }
+    
 
     /**
      * Show the form for creating a new resource.

@@ -4,6 +4,13 @@
 
 <div class="row" style="margin-top: 190px;">
     <div class="col-12">
+        <!-- Buscador interno -->
+        <form action="{{ route('impresoras.index') }}" method="GET" class="mb-4">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar Impresora por codigo interno, marca, etc." name="search">
+                <button class="btn btn-outline-dark" type="submit">Buscar</button>
+            </div>
+        </form>
         <div>
             <h1 class="text-black "><strong>Impresoras </strong><img width="48" height="48"
                     src="https://img.icons8.com/emoji/48/printer.png" alt="printer" /></h1>

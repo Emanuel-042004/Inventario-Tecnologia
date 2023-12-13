@@ -5,6 +5,13 @@
 
 <div class="row" style="margin-top: 190px;">
     <div class="col-12">
+          <!-- Buscador interno -->
+          <form action="{{ route('equipos.index') }}" method="GET" class="mb-4">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar equipo por serial, marca, etc." name="search">
+                <button class="btn btn-outline-dark" type="submit">Buscar</button>
+            </div>
+        </form>
         <div>
             <h1 class="text-black "><strong>Equipos </strong><img width="50" height="50"
                     src="https://img.icons8.com/3d-fluency/94/workstation.png" alt="workstation" /></h1>

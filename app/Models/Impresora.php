@@ -40,6 +40,7 @@ class Impresora extends Model
     public function scopeFilter($query, $search)
     {
         if ($search) {
+            $query->where(function ($query) use ($search) {
             $query->where('serial', 'like', '%' . $search . '%')
                   ->orWhere('codigo', 'like', '%' . $search . '%')
                   ->orWhere('modelo', 'like', '%' . $search . '%')
@@ -48,6 +49,7 @@ class Impresora extends Model
                   ->orWhere('tipo', 'like', '%' . $search . '%')
                   ->orWhere('tipo_toner', 'like', '%' . $search . '%')
                   ->orWhere('ubicacion', 'like', '%' . $search . '%');
+         });
         }
         return $query;
     }

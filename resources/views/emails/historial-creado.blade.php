@@ -58,10 +58,10 @@
         }
         .email-container ul {
             list-style-type: none;
-            background-color: #EAEAEA; /* Color de fondo gris claro */
+            background-color: #EAEAEA; 
             padding: 20px;
-            border-radius: 15px; /* Bordes redondeados */
-            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Sombra */
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
         }
         .email-container ul li {
             margin-bottom: 10px;

@@ -41,6 +41,7 @@ class Celular extends Model
     public function scopeFilter($query, $search)
     {
         if ($search) {
+            $query->where(function ($query) use ($search) {
             $query->where('serial', 'like', '%' . $search . '%')
                   ->orWhere('encargado', 'like', '%' . $search . '%')
                   ->orWhere('ubicacion', 'like', '%' . $search . '%')
@@ -50,7 +51,8 @@ class Celular extends Model
                   ->orWhere('imei_2', 'like', '%' . $search . '%')
                   ->orWhere('sim', 'like', '%' . $search . '%')
                   ->orWhere('departamento', 'like', '%' . $search . '%');
-        }
+        });
+     }
         return $query;
     }
 }

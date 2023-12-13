@@ -15,7 +15,7 @@
                     <li><strong>TIPO DE EQUIPO:</strong> {{ $equipo->tipo_equipo }}</li>
                     <li><strong>TIPO DE DISPOSITIVO:</strong> {{ $equipo->tipo_dispositivo}}</li>
 
-                    <!-- Agrega el resto de los detalles aquí -->
+                    
 
                     <li><strong>MODELO:</strong> {{ $equipo->modelo }} </li>
                     <li><strong>ANYDESK:</strong> {{ $equipo->anydesk }}</li>

@@ -5,7 +5,13 @@
 <div class="row" style="margin-top: 190px;">
   <div class="col-12">
     <div>
-      <h1 class="text-black "><strong>Telefonos</strong>
+    <form action="{{ route('telefonos.index') }}" method="GET" class="mb-4">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar telefono por codigo interno, marca, etc." name="search">
+                <button class="btn btn-outline-dark" type="submit">Buscar</button>
+            </div>
+        </form>
+      <h1 class="text-black "><strong>Teléfonos</strong>
         <img width="70" height="70" src="https://img.icons8.com/3d-fluency/94/phone-office.png" alt="phone-office" />
       </h1>
     </div>

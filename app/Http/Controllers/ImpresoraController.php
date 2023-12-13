@@ -27,20 +27,23 @@ class ImpresoraController extends Controller
 
     public function index(Request $request): View
     {
-
-        $search = $request->input('search');
-        $impresoras = Impresora::filter($search)->paginate(10);
-        $filtro = $request->get('filtro', 'todas'); // Obtener el valor del filtro
-
+        $filtro = $request->get('filtro', 'todas'); 
+        $impresorasQuery = Impresora::query();
+    
+       
         if ($filtro === 'propias') {
-            $impresoras = Impresora::where('tipo', 'Propia')->latest()->paginate(12);
+            $impresorasQuery->where('tipo', 'Propia')->latest()->paginate(12);
         } elseif ($filtro === 'alquiladas') {
-            $impresoras = Impresora::where('tipo', 'Alquilada')->latest()->paginate(12);
-        } else {
-            $impresoras = Impresora::latest()->paginate(12);
+            $impresorasQuery->where('tipo', 'Alquilada')->latest()->paginate(12);
         }
+    
+       
+        $search = $request->input('search');
+        $impresoras = $impresorasQuery->filter($search)->latest()->paginate(12);
+    
         return view('impresoras.impresoras', ['impresoras' => $impresoras]);
     }
+    
 
     public function create(): View
     {

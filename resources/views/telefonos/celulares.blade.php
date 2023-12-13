@@ -5,6 +5,12 @@
 <div class="row" style="margin-top: 190px;">
   <div class="col-12">
     <div>
+    <form action="{{ route('celulares.index') }}" method="GET" class="mb-4">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar celular por codigo interno, marca, etc." name="search">
+                <button class="btn btn-outline-dark" type="submit">Buscar</button>
+            </div>
+        </form>
       <h1 class="text-black "><strong>Celulares</strong>
         <img width="48" height="48" src="https://img.icons8.com/fluency/48/000000/smartphone.png" alt="smartphone" />
       </h1>

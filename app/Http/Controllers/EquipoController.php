@@ -28,22 +28,24 @@ class EquipoController extends Controller
     }
  
     public function index(Request $request): View
-    {
-        $search = $request->input('search');
-         $equipos = Equipo::filter($search)->paginate(10);
-         
-        $filtro = $request->get('filtro', 'todos'); // Obtener el valor del filtro
-        if ($filtro === 'propios') {
-            $equipos = Equipo::where('tipo_equipo', 'Propio')->latest()->paginate(12);
-        } elseif ($filtro === 'alquilados') {
-            $equipos = Equipo::where('tipo_equipo', 'Alquilado')->latest()->paginate(12);
-        } else {
-            $equipos = Equipo::latest()->paginate(12);
-        }
+{
+    $filtro = $request->get('filtro', 'todos'); 
+    $equiposQuery = Equipo::query();
+
     
-        return view('equipos.equipos', ['equipos' => $equipos]);
+    if ($filtro === 'propios') {
+        $equiposQuery->where('tipo_equipo', 'Propio');
+    } elseif ($filtro === 'alquilados') {
+        $equiposQuery->where('tipo_equipo', 'Alquilado');
     }
+
     
+    $search = $request->input('search');
+    $equipos = $equiposQuery->filter($search)->latest()->paginate(12);
+
+    return view('equipos.equipos', ['equipos' => $equipos]);
+}
+
 
    
 

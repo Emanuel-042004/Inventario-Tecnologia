@@ -28,11 +28,13 @@ class CelularController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $celulares = Celular::filter($search)->paginate(10);
-        $celulares = Celular::all();
-        $celulares = Celular::latest()->paginate(12);
-        return view('telefonos.celulares', ['celulares' => $celulares]); //
+    
+        
+        $celulares = Celular::filter($search)->latest()->paginate(12);
+    
+        return view('telefonos.celulares', ['celulares' => $celulares]);
     }
+    
 
 
     public function create(): View
@@ -70,7 +72,6 @@ class CelularController extends Controller
     {
         $data = $request->all();
 
-        // Eliminar los elementos vacíos del array
         $data = array_filter($data);
 
         $celular->update($data);
