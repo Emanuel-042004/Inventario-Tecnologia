@@ -10,11 +10,10 @@ class Equipo extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'serial',
         'marca',
         'tipo_equipo',
-        'tipo_dispositivo',
-        's_n',
         'modelo',
         'anydesk',
         'tipo_ram',
@@ -23,7 +22,6 @@ class Equipo extends Model
         'cantidad_alma',
         'licencia',
         'tipo_so',
-        'arquitectura',
         'modo_bios',
         'version_procesador',
         'modelo_procesador',
@@ -32,6 +30,10 @@ class Equipo extends Model
         'tarjeta_grafica',
         'ubicacion', 
         'encargado',
+        'tipo_dispositivo',
+        's_n',
+        'departamento',
+        
     ];
 
     public function mantenimiento(){
@@ -58,6 +60,7 @@ class Equipo extends Model
             $query->where('serial', 'like', '%' . $search . '%')
             ->orWhere('marca', 'like', '%' . $search . '%')
             ->orWhere('tipo_equipo', 'like', '%' . $search . '%')
+            ->orWhere('tipo_dispositivo', 'like', '%' . $search . '%')
             ->orWhere('modelo', 'like', '%' . $search . '%')
             ->orWhere('anydesk', 'like', '%' . $search . '%')
             ->orWhere('tipo_ram', 'like', '%' . $search . '%')
@@ -74,6 +77,7 @@ class Equipo extends Model
             ->orWhere('tarjeta_grafica', 'like', '%' . $search . '%')
             ->orWhere('ubicacion', 'like', '%' . $search . '%')
             ->orWhere('s_n', 'like', '%' . $search . '%')
+            ->orWhere('departamento', 'like', '%' . $search . '%')
             ->orWhere('encargado', 'like', '%' . $search . '%');
         });
     }

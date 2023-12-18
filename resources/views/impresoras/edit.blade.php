@@ -17,42 +17,54 @@
                         <input type="text" class="form-control shadow" id="serial" name="serial"
                             value="{{ $impresora->serial }}" required>
                     </div>
+                     
+                    <div class="mb-3">
+                        <label for="ip" class="form-label">Direccion IP :</label>
+                        <input type="text" class="form-control shadow" id="ip" name="ip"
+                            value="{{ $impresora->ip }}">
+                    </div>
 
                     <div class="mb-3">
                         <label for="proveedor" class="form-label">Proveedor:</label>
                         <input type="text" class="form-control shadow" id="proveedor" name="proveedor"
-                            value="{{ $impresora->proveedor }}" required>
+                            value="{{ $impresora->proveedor }}">
                     </div>
 
                     <div class="mb-3">
                         <label for="marca" class="form-label">Marca:</label>
                         <input type="text" class="form-control shadow" id="marca" name="marca"
-                            value="{{ $impresora->marca }}" required>
+                            value="{{ $impresora->marca }}">
                     </div>
 
                     <div class="mb-3">
                         <label for="modelo" class="form-label">Modelo:</label>
                         <input type="text" class="form-control shadow" id="modelo" name="modelo"
-                            value="{{ $impresora->modelo }}" required>
+                            value="{{ $impresora->modelo }}">
                     </div>
 
 
                     <div class="mb-3">
                         <label for="codigo" class="form-label">Serie:</label>
                         <input type="text" class="form-control shadow" id="codigo" name="codigo"
-                            value="{{ $impresora->codigo }}" required>
+                            value="{{ $impresora->codigo }}">
                     </div>
 
                     <div class="mb-3">
-                        <label for="ubicacion" class="form-label">Ubicacion:</label>
+                        <label for="ubicacion" class="form-label">Sitio:</label>
                         <input type="text" class="form-control shadow" id="ubicacion" name="ubicacion"
-                            value="{{ $impresora->ubicacion }}" required>
+                            value="{{ $impresora->ubicacion }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="departamento" class="form-label">Departamento:</label>
+                        <input type="text" class="form-control shadow" id="departamento" name="departamento"
+                            value="{{ $impresora->departamento }}">
                     </div>
 
                     <div class="mb-3">
                         <label for="tipo_toner" class="form-label">Tipo de Toner:</label>
                         <input type="text" class="form-control shadow" id="tipo_toner" name="tipo_toner"
-                            value="{{ $impresora->tipo_toner }}" required>
+                            value="{{ $impresora->tipo_toner }}">
                     </div>
 
                     <div class="mb-3">

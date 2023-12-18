@@ -12,7 +12,10 @@ use App\Http\Controllers\MantenimientoController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ExcelHistorialController;
 use App\Http\Controllers\ExcelMantenimientoController;
-
+use App\Http\Controllers\ExcelEquipoController;
+use App\Http\Controllers\ExcelImpresoraController;
+use App\Http\Controllers\ExcelCelularController;
+use App\Http\Controllers\ExcelTelefonoController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -92,3 +95,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/exportar/historial/{tipo}/{id}', [ExcelHistorialController::class, 'export'])->name('exportar.historial');
 Route::get('/exportar/mantenimiento/{tipo}/{id}', [ExcelMantenimientoController::class, 'export'])->name('exportar.mantenimiento');
+Route::get('/export-equipos', [ExcelEquipoController::class, 'export'])->name('export.equipos');
+Route::get('/export-impresoras', [ExcelImpresoraController::class, 'export'])->name('export.impresoras');
+Route::get('/export-celulares', [ExcelCelularController::class, 'export'])->name('export.celulares');
+Route::get('/export-telefonos', [ExcelTelefonoController::class, 'export'])->name('export.telefonos');

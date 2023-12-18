@@ -20,7 +20,8 @@ class Celular extends Model
         'sim',
         'encargado',
         'ubicacion',
-        'departamento'
+        'departamento',
+        's_n'
     ];
     public function historial(){
         return $this->morphOne(Historial::class,'historiable');
@@ -50,6 +51,7 @@ class Celular extends Model
                   ->orWhere('imei_1', 'like', '%' . $search . '%')
                   ->orWhere('imei_2', 'like', '%' . $search . '%')
                   ->orWhere('sim', 'like', '%' . $search . '%')
+                  ->orWhere('s_n', 'like', '%' . $search . '%')
                   ->orWhere('departamento', 'like', '%' . $search . '%');
         });
      }

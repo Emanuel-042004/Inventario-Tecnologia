@@ -5,16 +5,27 @@
 
 <div class="row" style="margin-top: 190px;">
     <div class="col-12">
-          <!-- Buscador interno -->
-          <form action="{{ route('equipos.index') }}" method="GET" class="mb-4">
+        <!-- Buscador interno -->
+        <form action="{{ route('equipos.index') }}" method="GET" class="mb-4">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Buscar equipo por serial, marca, etc." name="search">
+                <input type="text" class="form-control" placeholder="Buscar equipo por serial, marca, etc."
+                    name="search">
                 <button class="btn btn-outline-dark" type="submit">Buscar</button>
             </div>
         </form>
         <div>
             <h1 class="text-black "><strong>Equipos </strong><img width="50" height="50"
-                    src="https://img.icons8.com/3d-fluency/94/workstation.png" alt="workstation" /></h1>
+                    src="https://img.icons8.com/3d-fluency/94/workstation.png" alt="workstation">
+                @can('exportar.historial')
+                <a href="{{ route('export.equipos') }}" class="btn btn-light  mb-3 shadow"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                        height="20" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                        <path
+                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
+                        <path
+                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                    </svg></a>
+                @endcan
+            </h1>
             <form action="{{ route('equipos.index') }}" method="GET">
                 <div class="form-group float-end">
                     <!--FILTRO -->
@@ -48,7 +59,7 @@
             confirmButtonText: 'Aceptar'
         })
     </script>
-@endif
+    @endif
     @if (Session::has('success'))
     <script>
         Swal.fire({
@@ -57,8 +68,8 @@
             icon: 'success',
             timer: 2000
         }).then(() => {
-    window.location.replace('{{ route('equipos.index') }}');
-});
+            window.location.replace('{{ route('equipos.index') }}');
+        });
     </script>
     @endif
 
@@ -70,8 +81,8 @@
             icon: 'success',
             timer: 2000
         }).then(() => {
-    window.location.replace('{{ route('equipos.index') }}');
-});
+            window.location.replace('{{ route('equipos.index') }}');
+        });
     </script>
     @endif
 
@@ -83,16 +94,16 @@
             icon: 'success',
             timer: 2000
         }).then(() => {
-    window.location.replace('{{ route('equipos.index') }}');
-});
+            window.location.replace('{{ route('equipos.index') }}');
+        });
     </script>
     @endif
     <!--REGISTROS -->
     <div class="col-12 mt-4">
-    @if ($equipos->isEmpty())
+        @if ($equipos->isEmpty())
         <h2 class="text-center">No hay registros disponibles.</h2>
         <p class="text-center">(Debes Agregar un Equipo para poder gestionarlo)</p>
-    @else
+        @else
         <div class="row">
             @foreach($equipos as $equipo)
             <div class="col-md-4">
@@ -112,10 +123,12 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text text-black"><strong>Encargado:</strong> {{$equipo->encargado}}</p>
-                        <p class="card-text text-black"><strong>Ubicacion:</strong> {{$equipo->ubicacion}}</p>
+                        <p class="card-text text-black"><strong>Sitio:</strong> {{$equipo->ubicacion}}</p>
+                        <p class="card-text text-black"><strong>Departamento:</strong> {{$equipo->departamento}}</p>
                         <p class="card-text text-black"><strong>Tipo de Equipo:</strong> {{$equipo->tipo_equipo}}</p>
-                        <p class="card-text text-black"><strong>Tipo de Dispositivo:</strong> {{$equipo->tipo_dispositivo}}</p>
-                        
+                        <p class="card-text text-black"><strong>Tipo de Dispositivo:</strong>
+                            {{$equipo->tipo_dispositivo}}</p>
+
                         @can('equipos.edit')
                         <!--BOTON EDITAR -->
                         <a href="{{route('equipos.edit', $equipo)}}" class="btn btn-dark shadow"
@@ -126,7 +139,7 @@
                                 <path fill-rule="evenodd"
                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                             </svg></a>
-                            @endcan
+                        @endcan
 
                         @can('equipos.destroy')
                         <!--BOTON ELIMINAR -->
@@ -134,7 +147,8 @@
                             method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="button" class="btn btn-danger eliminar-equipo shadow" style="border-radius: 50px;">
+                            <button type="button" class="btn btn-danger eliminar-equipo shadow"
+                                style="border-radius: 50px;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-trash3" viewBox="0 0 16 16">
                                     <path
@@ -143,8 +157,8 @@
                         </form>
                         @endcan
                         <!--BOTON VER DETALLES-->
-                        <a href="" class="btn btn-light float-end shadow" data-bs-toggle="modal" style="border-radius: 50px;"
-                            data-bs-target="#verEquipoPModal{{$equipo->id}}">
+                        <a href="" class="btn btn-light float-end shadow" data-bs-toggle="modal"
+                            style="border-radius: 50px;" data-bs-target="#verEquipoPModal{{$equipo->id}}">
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-eye-fill" viewBox="0 0 16 16">

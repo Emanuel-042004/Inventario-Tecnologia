@@ -18,6 +18,11 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="ip" class="form-label">Direccion IP:</label>
+                        <input type="text" class="form-control shadow" id="ip" name="ip" >
+                    </div>
+
+                    <div class="mb-3">
                         <label for="proveedor" class="form-label">Proveedor:</label>
                         <input type="text" class="form-control shadow" id="proveedor" name="proveedor" >
                     </div>
@@ -33,13 +38,18 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="codigo" class="form-label"> Serie:</label>
+                        <label for="codigo" class="form-label"> Serial:</label>
                         <input type="text" class="form-control shadow" id="codigo" name="codigo" >
                     </div>
 
                     <div class="mb-3">
-                        <label for="ubicacion" class="form-label">Ubicacion:</label>
+                        <label for="ubicacion" class="form-label">Sitio:</label>
                         <input type="text" class="form-control shadow" id="ubicacion" name="ubicacion" >
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="departamento" class="form-label">Departamento:</label>
+                        <input type="text" class="form-control shadow" id="departamento" name="departamento" >
                     </div>
 
                     <div class="mb-3">

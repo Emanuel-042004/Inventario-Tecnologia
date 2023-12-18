@@ -21,6 +21,7 @@
                     <li><strong>ANYDESK:</strong> {{ $equipo->anydesk }}</li>
                     <li><strong>ENCARGADO:</strong> {{ $equipo->encargado }} </li>
                     <li><strong>UBICACION:</strong> {{ $equipo->ubicacion }}</li>
+                    <li><strong>DEPARTAMENTO:</strong> {{ $equipo->departamento }}</li>
                     <li><strong>DIRECCION IP:</strong> {{ $equipo->direccionIP }} </li>
                     <br>
                     <br>

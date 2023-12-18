@@ -38,7 +38,7 @@
               </div>
 
               <div class="mb-3">
-                <label for="ubicacion" class="form-label">Ubicacion:</label>
+                <label for="ubicacion" class="form-label">Sitio:</label>
                 <input type="text" class="form-control shadow" id="ubicacion" name="ubicacion"
                   value="{{ $telefono->ubicacion }}">
               </div>

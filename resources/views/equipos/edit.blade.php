@@ -91,8 +91,12 @@
         <input type="text" class="form-control shadow" id="encargado" name="encargado" value="{{$equipo->encargado}}">
       </div>
       <div class="mb-3">
-        <label for="ubicacion" class="form-label">Ubicacion</label>
+        <label for="ubicacion" class="form-label">Sitio</label>
         <input type="text" class="form-control shadow" id="ubicacion" name="ubicacion" value="{{$equipo->ubicacion}}">
+      </div>
+      <div class="mb-3">
+        <label for="departamento" class="form-label">Departamento</label>
+        <input type="text" class="form-control shadow" id="departamento" name="departamento" value="{{$equipo->departamento}}">
       </div>
     </div>
 

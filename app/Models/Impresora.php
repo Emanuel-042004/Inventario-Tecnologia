@@ -15,8 +15,10 @@ class Impresora extends Model
         'proveedor',
         'tipo',
         'ubicacion',
+        'departamento',
         'tipo_toner',
         'codigo',
+        'ip',
        
     ];
 
@@ -48,6 +50,8 @@ class Impresora extends Model
                   ->orWhere('proveedor', 'like', '%' . $search . '%')
                   ->orWhere('tipo', 'like', '%' . $search . '%')
                   ->orWhere('tipo_toner', 'like', '%' . $search . '%')
+                  ->orWhere('ip', 'like', '%' . $search . '%')
+                  ->orWhere('departamento', 'like', '%' . $search . '%')
                   ->orWhere('ubicacion', 'like', '%' . $search . '%');
          });
         }

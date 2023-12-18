@@ -18,6 +18,10 @@
                 <input type="text" class="form-control shadow" id="serial" name="serial" required>
               </div>
               <div class="mb-3">
+                <label for="s_n" class="form-label">Serial:</label>
+                <input type="text" class="form-control shadow" id="s_n" name="s_n" >
+              </div>
+              <div class="mb-3">
                 <label for="marca" class="form-label">Marca:</label>
                 <input type="text" class="form-control shadow" id="marca" name="marca">
               </div>

@@ -90,8 +90,13 @@
         <input type="text" class="form-control shadow" id="encargado" name="encargado" value="">
       </div>
       <div class="mb-3">
-        <label for="ubicacion" class="form-label">Ubicacion</label>
-        <input type="text" class="form-control shadow" id="ubicacion" name="ubicacion" value="">
+        <label for="ubicacion" class="form-label">Sitio</label>
+        <input type="text" class="form-control shadow" id="ubicacion" name="ubicacion" placeholder="En que sede se encuentra" value="">
+      </div>
+
+      <div class="mb-3">
+        <label for="departamento" class="form-label">Departamento</label>
+        <input type="text" class="form-control shadow" id="departamento" name="departamento" value="">
       </div>
     </div>
 
