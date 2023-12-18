@@ -16,7 +16,7 @@
         <div>
             <h1 class="text-black "><strong>Equipos </strong><img width="50" height="50"
                     src="https://img.icons8.com/3d-fluency/94/workstation.png" alt="workstation">
-                @can('exportar.historial')
+                @can('exportar')
                 <a href="{{ route('export.equipos') }}" class="btn btn-light  mb-3 shadow"><svg xmlns="http://www.w3.org/2000/svg" width="20"
                         height="20" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                         <path

@@ -14,7 +14,7 @@
         <div>
             <h1 class="text-black "><strong>Impresoras </strong><img width="48" height="48"
                     src="https://img.icons8.com/emoji/48/printer.png" alt="printer">
-                    @can('exportar.historial')
+                    @can('exportar')
                 <a href="{{ route('export.impresoras') }}" class="btn btn-light  mb-3 shadow"><svg xmlns="http://www.w3.org/2000/svg" width="20"
                         height="20" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                         <path

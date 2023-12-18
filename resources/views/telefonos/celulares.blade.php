@@ -13,7 +13,7 @@
         </form>
       <h1 class="text-black "><strong>Celulares</strong>
         <img width="48" height="48" src="https://img.icons8.com/fluency/48/000000/smartphone.png" alt="smartphone" />
-        @can('exportar.historial')
+        @can('exportar')
                 <a href="{{ route('export.celulares') }}" class="btn btn-light  mb-3 shadow"><svg xmlns="http://www.w3.org/2000/svg" width="20"
                         height="20" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                         <path

@@ -50,6 +50,7 @@ class RoleSeeder extends Seeder
 
       Permission::create(['name' => 'exportar.historial'])->syncRoles([$role1]);
       Permission::create(['name' => 'exportar.mantenimiento'])->syncRoles([$role1]);
+      Permission::create(['name' => 'exportar'])->syncRoles([$role1]);
       
 
 

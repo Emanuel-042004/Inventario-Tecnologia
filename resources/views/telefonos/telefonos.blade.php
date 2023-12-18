@@ -13,7 +13,7 @@
         </form>
       <h1 class="text-black "><strong>Teléfonos</strong>
         <img width="70" height="70" src="https://img.icons8.com/3d-fluency/94/phone-office.png" alt="phone-office">
-        @can('exportar.historial')
+        @can('exportar')
                 <a href="{{ route('export.telefonos') }}" class="btn btn-light  mb-3 shadow"><svg xmlns="http://www.w3.org/2000/svg" width="20"
                         height="20" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                         <path
