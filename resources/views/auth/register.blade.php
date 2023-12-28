@@ -85,7 +85,7 @@
                             <button type="submit" class="btn btn-danger">
                                 {{ __('Registrarse') }}
                             </button>
-                            <a href="{{ route('login') }}" class="btn btn-dark">Iniciar Sesion</a>
+                            <a href="{{ route('login') }}" class="btn btn-dark">Iniciar Sesión</a>
                         </div>
 
                 </div>

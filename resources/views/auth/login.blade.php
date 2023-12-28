@@ -9,7 +9,7 @@
                 <img src="{{ asset('imagenes/Fondo Los Retales.jpg') }}" style="width: 170px; border-radius: 50%;">
             </div>
 
-            <h1 style="text-align: center;">{{ __('Iniciar Sesion') }}</h1>
+            <h1 style="text-align: center;">{{ __('Iniciar Sesión') }}</h1>
             <div class="card border-0 shadow-lg">
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">

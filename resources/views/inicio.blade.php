@@ -74,7 +74,7 @@
             <img src="{{ asset('imagenes/Fondo Los Retales.jpg') }}" alt="Imagen de la aplicación" class="img-fluid">
         </div>
         <div class="col-md-6 mb-3">
-            <h1><strong>Bienvenido a la aplicación de inventarios</strong></h1><br>
+            <h1><strong>Bienvenido a la Gestion de Activos fijos</strong></h1><br>
             <p>Este es un sitio creado para gestionar el inventario de Equipos, Impresoras y teléfonos que posee la
                 empresa LOS RETALES</p>
 
@@ -83,7 +83,7 @@
                 @auth
                 <a href="{{ url('/home') }}" class="btn btn-dark">Home</a>
                 @else
-                <a href="{{ route('login') }}" class="btn btn-dark">Iniciar Sesion</a>
+                <a href="{{ route('login') }}" class="btn btn-dark">Iniciar Sesión</a>
 
                 <!--@if (Route::has('register'))
                 <a href="{{ route('register') }}" class="btn btn-dark">Registrarse</a>
